@@ -20,7 +20,7 @@ public class MenuBarLayout {
     public static JLabel mistakeCounter;
     public static int mistakes = 0; //count how much user made a mistake
 
-    public static JMenuBar menuBar = new JMenuBar();
+    public static JMenuBar menuBar;
 
     JMenu file = new JMenu("Файл");
     JMenu window = new JMenu("Вікно");
@@ -37,6 +37,7 @@ public class MenuBarLayout {
 
 
     public MenuBarLayout(){
+        menuBar = new JMenuBar();
         mistakeCounter = new JLabel();
         wpm = new JLabel();
         stopWatch = new JLabel();
@@ -47,17 +48,18 @@ public class MenuBarLayout {
             elapsedTime +=1000;
             minutes = (elapsedTime/60000) % 60;
             seconds = (elapsedTime/1000) % 60;
-            wordsPerMinute = (int) (CheckText.charCount/5)/seconds;
+            wordsPerMinute = (CheckText.charCount/5)/seconds;
             minutesShow = String.format("%02d",minutes);
             secondsShow = String.format("%02d",seconds);
             stopWatch.setText("Час " + minutesShow+":"+secondsShow + "  ");
             mistakeCounter.setText("Помилки: " + mistakes);
             wpm.setText("слів за хвилину: " + wordsPerMinute);
+            System.out.print(wordsPerMinute+  " ");
         });
 
         stopWatch.setText("Час: " + minutesShow+":"+secondsShow + " ");
-        mistakeCounter.setText("Помилки: " + mistakes);
-        wpm.setText("слів за хвилину: " + wordsPerMinute);
+        mistakeCounter.setText("Помилки: " + mistakes + " ");
+        wpm.setText("слів за хвилину: " + wordsPerMinute + " ");
         //mistakeCounter.setText("Помиклки: " + CheckText.mistakeCount);
 
         menuBar.add(file);
@@ -76,6 +78,6 @@ public class MenuBarLayout {
         menuBar.add(stopWatch);
         menuBar.add(mistakeCounter);
         menuBar.add(wpm);
-        //menuBar.add(mistakeCounter);
+        menuBar.add(mistakeCounter);
     }
 }

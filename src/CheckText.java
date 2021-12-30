@@ -1,5 +1,3 @@
-
-
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
@@ -89,7 +87,7 @@ public class CheckText  {
             if (backSpace != KeyEvent.VK_BACK_SPACE) {
                 //if cText1 current char is equal to cText2 char set the foreground magenta
                 try {
-                    if (C == cText.gText1.charAt(cText.gText2.length())) {
+                    if (C == cText.getOutputText.charAt(cText.getInputText.length())) {
 
                         doc.insertString(doc.getLength(), String.valueOf(C), attributeSetGreen);
 
@@ -98,12 +96,16 @@ public class CheckText  {
                             MainFrame.menuBarLayout.timer.start();
                         }
 
-                        if (charCount == cText.gText2.length()){
+                        if (charCount == cText.getInputText.length()){
                             MainFrame.menuBarLayout.timer.stop();
                         }
                     }
                     //if cText1 current char is not equal to cText2 char set the foreground red
-                    if (C != cText.gText1.charAt(cText.gText2.length())) {
+                    if (C != cText.getOutputText.charAt(cText.getInputText.length())) {
+                        charCount++;
+                        if(charCount == 1){
+                            MainFrame.menuBarLayout.timer.start();
+                        }
                         doc.insertString(doc.getLength(), String.valueOf(C), attributeSetRed);
                         MenuBarLayout.mistakes++;
                         MenuBarLayout.mistakeCounter.setText("Помилки: " + MenuBarLayout.mistakes);
@@ -131,13 +133,13 @@ public class CheckText  {
     }
     public class fillCharArray {
 
-        String gText1;
-        String gText2;
+        String getOutputText;
+        String getInputText;
 
         public fillCharArray() {
 
-            gText1 = outputText.getText();
-            gText2 = inputText.getText();
+            getOutputText = outputText.getText();
+            getInputText = inputText.getText();
 
         }
     }
