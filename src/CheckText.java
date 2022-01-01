@@ -18,7 +18,7 @@ public class CheckText  {
     public int mistakeCount;
 
     public JTextPane inputText;
-    public JTextPane outputText;
+    public static JTextPane outputText;
     StyledDocument doc;
     ButtonLayout buttonLayout;
 
@@ -105,6 +105,9 @@ public class CheckText  {
                         charCount++;
                         if(charCount == 1){
                             MainFrame.menuBarLayout.timer.start();
+                        }
+                        if (charCount == cText.getInputText.length()){
+                            MainFrame.menuBarLayout.timer.stop();
                         }
                         doc.insertString(doc.getLength(), String.valueOf(C), attributeSetRed);
                         MenuBarLayout.mistakes++;

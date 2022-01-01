@@ -1,9 +1,16 @@
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.Timer;
-public class MenuBarLayout {
+import javax.swing.filechooser.FileSystemView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+
+public class MenuBarLayout implements ActionListener {
 
    //CheckText checkText = new CheckText();
 
@@ -19,6 +26,8 @@ public class MenuBarLayout {
     JLabel stopWatch;
     public static JLabel mistakeCounter;
     public static int mistakes = 0; //count how much user made a mistake
+
+    JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
     public static JMenuBar menuBar;
 
@@ -48,7 +57,7 @@ public class MenuBarLayout {
             elapsedTime +=1000;
             minutes = (elapsedTime/60000) % 60;
             seconds = (elapsedTime/1000) % 60;
-            wordsPerMinute = (CheckText.charCount/5)/seconds;
+            wordsPerMinute = CheckText.charCount/seconds;
             minutesShow = String.format("%02d",minutes);
             secondsShow = String.format("%02d",seconds);
             stopWatch.setText("Час " + minutesShow+":"+secondsShow + "  ");
@@ -79,5 +88,27 @@ public class MenuBarLayout {
         menuBar.add(mistakeCounter);
         menuBar.add(wpm);
         menuBar.add(mistakeCounter);
+
+        openFile.addActionListener(this);
+
+        closeProgram.addActionListener(this);
+
     }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+     if(e.getSource()==openFile){
+         System.out.print("choose a file");
+         int returnValue = fileChooser.showOpenDialog(null);
+         if(returnValue == JFileChooser.APPROVE_OPTION){
+             File selectedFile = fileChooser.getSelectedFile();
+             //File openedFile = fileChooser.;
+             CheckText.outputText.setText(String.valueOf(selectedFile));
+         }
+        }
+     if(e.getSource() == closeProgram){
+         System.exit(-1);
+     }
+     }
 }
+
