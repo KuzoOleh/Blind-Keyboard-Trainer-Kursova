@@ -12,8 +12,6 @@ public class ButtonLayout {
 
     public ButtonLayout(){
 
-
-
         KeyboardPanel = new JPanel();
         KeyboardPanel.setSize(350,200);
         KeyboardPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -185,17 +183,13 @@ public class ButtonLayout {
         }
     }
 
-
         public static class ControlButtons extends JButton{
         public ControlButtons(String name, int width, int height, Color background){
             setText(name);
             setPreferredSize(new Dimension(width, height));
             setBackground(background);
 
-
         }
-
     }
-
     }
 //go ahead, laugh

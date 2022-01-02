@@ -15,7 +15,6 @@ import java.awt.event.KeyEvent;
 public class CheckText  {
 
     public static int charCount = 0;
-    public int mistakeCount;
 
     public JTextPane inputText;
     public static JTextPane outputText;
@@ -96,18 +95,12 @@ public class CheckText  {
                             MainFrame.menuBarLayout.timer.start();
                         }
 
-                        if (charCount == cText.getInputText.length()){
-                            MainFrame.menuBarLayout.timer.stop();
-                        }
                     }
                     //if cText1 current char is not equal to cText2 char set the foreground red
                     if (C != cText.getOutputText.charAt(cText.getInputText.length())) {
                         charCount++;
                         if(charCount == 1){
                             MainFrame.menuBarLayout.timer.start();
-                        }
-                        if (charCount == cText.getInputText.length()){
-                            MainFrame.menuBarLayout.timer.stop();
                         }
                         doc.insertString(doc.getLength(), String.valueOf(C), attributeSetRed);
                         MenuBarLayout.mistakes++;
@@ -117,6 +110,10 @@ public class CheckText  {
                         MenuBarLayout.mistakes--;
 
                             doc.remove(current.length(),1);
+                        }
+
+                        if (charCount == cText.getOutputText.length()){
+                            MainFrame.menuBarLayout.timer.stop();
                         }
                     }
 
@@ -129,8 +126,6 @@ public class CheckText  {
                 doc.remove(current.length() - 1, 1);
                 charCount--;
             }
-            //System.out.print(charCount + " ");
-            //System.out.print(mistakeCount + " ");
         }
 
     }
@@ -146,4 +141,5 @@ public class CheckText  {
 
         }
     }
+
 }
