@@ -8,11 +8,14 @@ import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 
 
 public class MenuBarLayout implements ActionListener {
 
-   //CheckText checkText = new CheckText();
+    //CheckText checkText = new CheckText();
 
     Timer timer;
     int wordsPerMinute = 0;
@@ -45,28 +48,28 @@ public class MenuBarLayout implements ActionListener {
     JMenuItem info = new JMenuItem("Правила");
 
 
-    public MenuBarLayout(){
+    public MenuBarLayout() {
         menuBar = new JMenuBar();
         mistakeCounter = new JLabel();
         wpm = new JLabel();
         stopWatch = new JLabel();
-        minutesShow = String.format("%02d",minutes);
-        secondsShow = String.format("%02d",seconds);
+        minutesShow = String.format("%02d", minutes);
+        secondsShow = String.format("%02d", seconds);
         mistakeCounter = new JLabel();
         timer = new Timer(1000, e -> {
-            elapsedTime +=1000;
-            minutes = (elapsedTime/60000) % 60;
-            seconds = (elapsedTime/1000) % 60;
-            wordsPerMinute = CheckText.charCount/seconds;
-            minutesShow = String.format("%02d",minutes);
-            secondsShow = String.format("%02d",seconds);
-            stopWatch.setText("Час " + minutesShow+":"+secondsShow + "  ");
+            elapsedTime += 1000;
+            minutes = (elapsedTime / 60000) % 60;
+            seconds = (elapsedTime / 1000) % 60;
+            wordsPerMinute = CheckText.charCount / seconds;
+            minutesShow = String.format("%02d", minutes);
+            secondsShow = String.format("%02d", seconds);
+            stopWatch.setText("Час " + minutesShow + ":" + secondsShow + "  ");
             mistakeCounter.setText("Помилки: " + mistakes);
             wpm.setText("слів за хвилину: " + wordsPerMinute);
-            System.out.print(wordsPerMinute+  " ");
+            System.out.print(wordsPerMinute + " ");
         });
 
-        stopWatch.setText("Час: " + minutesShow+":"+secondsShow + " ");
+        stopWatch.setText("Час: " + minutesShow + ":" + secondsShow + " ");
         mistakeCounter.setText("Помилки: " + mistakes + " ");
         wpm.setText("слів за хвилину: " + wordsPerMinute + " ");
         //mistakeCounter.setText("Помиклки: " + CheckText.mistakeCount);
@@ -94,21 +97,35 @@ public class MenuBarLayout implements ActionListener {
         closeProgram.addActionListener(this);
 
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
-     if(e.getSource()==openFile){
-         System.out.print("choose a file");
-         int returnValue = fileChooser.showOpenDialog(null);
-         if(returnValue == JFileChooser.APPROVE_OPTION){
-             File selectedFile = fileChooser.getSelectedFile();
-             //File openedFile = fileChooser.;
-             CheckText.outputText.setText(String.valueOf(selectedFile));
-         }
+        if (e.getSource() == openFile) {
+            String line;
+            CheckText.outputText.setText("");
+            int returnValue = fileChooser.showOpenDialog(null);
+            if(returnValue == JFileChooser.APPROVE_OPTION){
+
+                File file = fileChooser.getSelectedFile();
+                try {
+                    Scanner scan = new Scanner(file);
+                    while(scan.hasNextLine()){
+                        line = scan.nextLine();
+                        System.out.print(line);
+                        CheckText.outputText.setText(line);
+                    }
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+
+
+            }
+
+            if (e.getSource() == closeProgram) {
+                System.exit(-1);
+            }
         }
-     if(e.getSource() == closeProgram){
-         System.exit(-1);
-     }
-     }
-}
+    }}
+
 
