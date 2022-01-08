@@ -16,7 +16,7 @@ public class CheckText  {
 
     public static int charCount = 0;
 
-    public JTextPane inputText;
+    public static JTextPane inputText;
     public static JTextPane outputText;
     StyledDocument doc;
     ButtonLayout buttonLayout;
@@ -129,7 +129,7 @@ public class CheckText  {
         }
 
     }
-    public class fillCharArray {
+    public class  fillCharArray {
 
         String getOutputText;
         String getInputText;

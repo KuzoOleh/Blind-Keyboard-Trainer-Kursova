@@ -102,8 +102,18 @@ public class MenuBarLayout implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == openFile) {
+            CheckText.charCount = 0;
+            timer.restart();
+            timer.stop();
             String line;
             CheckText.outputText.setText("");
+            CheckText.inputText.setText("");
+            seconds = 0;
+            minutes = 0;
+            minutesShow = String.format("%02d", minutes);
+            secondsShow = String.format("%02d", seconds);
+
+            stopWatch.setText("Час: " + minutesShow + ":" + secondsShow + " ");
             int returnValue = fileChooser.showOpenDialog(null);
             if(returnValue == JFileChooser.APPROVE_OPTION){
 
@@ -112,14 +122,11 @@ public class MenuBarLayout implements ActionListener {
                     Scanner scan = new Scanner(file);
                     while(scan.hasNextLine()){
                         line = scan.nextLine();
-                        System.out.print(line);
                         CheckText.outputText.setText(line);
                     }
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
                 }
-
-
             }
 
             if (e.getSource() == closeProgram) {
