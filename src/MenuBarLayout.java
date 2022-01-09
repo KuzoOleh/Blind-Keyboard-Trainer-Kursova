@@ -65,13 +65,13 @@ public class MenuBarLayout implements ActionListener {
             secondsShow = String.format("%02d", seconds);
             stopWatch.setText("Час " + minutesShow + ":" + secondsShow + "  ");
             mistakeCounter.setText("Помилки: " + mistakes);
-            wpm.setText("слів за хвилину: " + wordsPerMinute);
+            wpm.setText("символів за секунду: " + wordsPerMinute);
             System.out.print(wordsPerMinute + " ");
         });
 
         stopWatch.setText("Час: " + minutesShow + ":" + secondsShow + " ");
         mistakeCounter.setText("Помилки: " + mistakes + " ");
-        wpm.setText("слів за хвилину: " + wordsPerMinute + " ");
+        wpm.setText("символів за секудну: " + wordsPerMinute + " ");
         //mistakeCounter.setText("Помиклки: " + CheckText.mistakeCount);
 
         menuBar.add(file);
@@ -103,15 +103,17 @@ public class MenuBarLayout implements ActionListener {
 
         if (e.getSource() == openFile) {
             CheckText.charCount = 0;
-            timer.restart();
+            //timer.restart();
             timer.stop();
             String line;
             CheckText.outputText.setText("");
             CheckText.inputText.setText("");
-            seconds = 0;
-            minutes = 0;
-            minutesShow = String.format("%02d", minutes);
-            secondsShow = String.format("%02d", seconds);
+            wpm.setText("символів за секунду: 0");
+            mistakeCounter.setText("Помилки: 0 ");
+            elapsedTime = 0;
+
+            minutesShow = String.format("%02d", 0);
+            secondsShow = String.format("%02d", 0);
 
             stopWatch.setText("Час: " + minutesShow + ":" + secondsShow + " ");
             int returnValue = fileChooser.showOpenDialog(null);
