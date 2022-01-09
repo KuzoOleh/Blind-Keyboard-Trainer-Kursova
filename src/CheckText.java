@@ -6,9 +6,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -22,6 +20,8 @@ public class CheckText  {
     ButtonLayout buttonLayout;
 
     public  JPanel textLayout;
+    JPanel outputTextLayout;
+    JPanel inputTextLayout;
 
     StyleContext context = StyleContext.getDefaultStyleContext();
 
@@ -33,11 +33,11 @@ public class CheckText  {
 
     public CheckText() {
 
-        buttonLayout = new ButtonLayout();
         Font font = new Font("comic-sans", Font.PLAIN, 16);
 
         textLayout = new JPanel();
         textLayout.setLayout(new GridLayout(2,1));
+
 
         outputText = new JTextPane();
         outputText.setText("Quick Brown Fox Jumps OVER The Lazy Dog");
@@ -45,6 +45,11 @@ public class CheckText  {
         //outputText.setText("what if i try it without upper case?");
         outputText.setFont(font);
         outputText.setEditable(false);
+
+
+        outputTextLayout = new JPanel();
+        outputTextLayout.setLayout(new BorderLayout());
+        outputTextLayout.add(outputText);
 
         inputText = new JTextPane();
         inputText.setBackground(Color.GRAY);
@@ -68,7 +73,7 @@ public class CheckText  {
             }
         });
 
-        textLayout.add(outputText);
+        textLayout.add(outputTextLayout);
         textLayout.add(inputText);
 
     }
