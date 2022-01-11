@@ -1,11 +1,13 @@
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -16,12 +18,14 @@ public class CheckText  {
 
     public static int charCount = 0;
 
-    public JTextPane inputText;
+    public static JTextPane inputText;
     public static JTextPane outputText;
     StyledDocument doc;
-    ButtonLayout buttonLayout;
-
     public  JPanel textLayout;
+    JPanel outputTextLayout;
+    JPanel inputTextLayout;
+    JScrollPane outputTextScrollPane;
+    JScrollPane inputTextScrollPane;
 
     StyleContext context = StyleContext.getDefaultStyleContext();
 
@@ -33,18 +37,25 @@ public class CheckText  {
 
     public CheckText() {
 
-        buttonLayout = new ButtonLayout();
+
+        outputTextLayout = new JPanel(new BorderLayout());
+        inputTextLayout = new JPanel(new BorderLayout());
+
         Font font = new Font("comic-sans", Font.PLAIN, 16);
 
         textLayout = new JPanel();
         textLayout.setLayout(new GridLayout(2,1));
 
         outputText = new JTextPane();
-        outputText.setText("Quick Brown Fox Jumps OVER The Lazy Dog");
+        //outputText.setText("Quick Brown Fox Jumps OVER The Lazy Dog");
         //outputText.setText("Все-таки кодировка не була проблемою, лол");
         //outputText.setText("what if i try it without upper case?");
         outputText.setFont(font);
         outputText.setEditable(false);
+
+        outputTextScrollPane = new JScrollPane(outputText);
+        inputTextScrollPane = new JScrollPane(inputText);
+
 
         inputText = new JTextPane();
         inputText.setBackground(Color.GRAY);
@@ -58,18 +69,20 @@ public class CheckText  {
             public void keyReleased(KeyEvent e) {
 
                 try {
-
                     new Check(e);
-
                 } catch (BadLocationException badLocationException) {
                     badLocationException.printStackTrace();
                 }
-
             }
         });
 
-        textLayout.add(outputText);
+
+        outputTextLayout.add(outputTextScrollPane);
+
+        textLayout.add(outputTextLayout);
         textLayout.add(inputText);
+
+
 
     }
     public class Check {
@@ -108,15 +121,15 @@ public class CheckText  {
                         MenuBarLayout.menuBar.add(MenuBarLayout.mistakeCounter);
                         if((shiftButton == KeyEvent.VK_SHIFT)||(controlButton == KeyEvent.VK_CONTROL)){
                         MenuBarLayout.mistakes--;
+                        //charCount--;
 
                             doc.remove(current.length(),1);
                         }
-
-                        if (charCount == cText.getOutputText.length()){
-                            MainFrame.menuBarLayout.timer.stop();
-                        }
                     }
 
+                    if (charCount == cText.getOutputText.length()){
+                        MainFrame.menuBarLayout.timer.stop();
+                    }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Ви не можете більше дописувати текст",
                             "Помилка", JOptionPane.ERROR_MESSAGE);
@@ -129,7 +142,7 @@ public class CheckText  {
         }
 
     }
-    public class fillCharArray {
+    public class  fillCharArray {
 
         String getOutputText;
         String getInputText;
@@ -141,5 +154,4 @@ public class CheckText  {
 
         }
     }
-
 }
