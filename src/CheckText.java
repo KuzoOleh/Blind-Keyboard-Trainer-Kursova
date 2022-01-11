@@ -21,9 +21,11 @@ public class CheckText  {
     public static JTextPane inputText;
     public static JTextPane outputText;
     StyledDocument doc;
-    ButtonLayout buttonLayout;
-
     public  JPanel textLayout;
+    JPanel outputTextLayout;
+    JPanel inputTextLayout;
+    JScrollPane outputTextScrollPane;
+    JScrollPane inputTextScrollPane;
 
     StyleContext context = StyleContext.getDefaultStyleContext();
 
@@ -34,6 +36,10 @@ public class CheckText  {
             StyleConstants.Foreground, Color.BLACK);
 
     public CheckText() {
+
+
+        outputTextLayout = new JPanel(new BorderLayout());
+        inputTextLayout = new JPanel(new BorderLayout());
 
         Font font = new Font("comic-sans", Font.PLAIN, 16);
 
@@ -47,6 +53,8 @@ public class CheckText  {
         outputText.setFont(font);
         outputText.setEditable(false);
 
+        outputTextScrollPane = new JScrollPane(outputText);
+        inputTextScrollPane = new JScrollPane(inputText);
 
 
         inputText = new JTextPane();
@@ -61,18 +69,20 @@ public class CheckText  {
             public void keyReleased(KeyEvent e) {
 
                 try {
-
                     new Check(e);
-
                 } catch (BadLocationException badLocationException) {
                     badLocationException.printStackTrace();
                 }
-
             }
         });
 
-        textLayout.add(outputText);
+
+        outputTextLayout.add(outputTextScrollPane);
+
+        textLayout.add(outputTextLayout);
         textLayout.add(inputText);
+
+
 
     }
     public class Check {
@@ -86,7 +96,6 @@ public class CheckText  {
 
             String current = inputText.getText();
 
-            //System.out.println(cText.getOutputText.length());
             if (backSpace != KeyEvent.VK_BACK_SPACE) {
                 //if cText1 current char is equal to cText2 char set the foreground magenta
                 try {
@@ -116,13 +125,11 @@ public class CheckText  {
 
                             doc.remove(current.length(),1);
                         }
-
                     }
 
                     if (charCount == cText.getOutputText.length()){
                         MainFrame.menuBarLayout.timer.stop();
                     }
-
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Ви не можете більше дописувати текст",
                             "Помилка", JOptionPane.ERROR_MESSAGE);
@@ -147,5 +154,4 @@ public class CheckText  {
 
         }
     }
-
 }
