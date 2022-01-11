@@ -10,22 +10,30 @@ public class MainFrame {
     JPanel mainPanel;
     public static CheckText checkText = new CheckText();
     public static MenuBarLayout menuBarLayout;
+    int scrWidth;
+    int scrHeight;
+
+    int winWidth = 800;
+    int winHeight = 600;
 
     public MainFrame(){
+
+        scrWidth = (int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+        scrHeight = (int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
         frame = new JFrame();
 
         mainPanel = new JPanel();
-        mainPanel.setSize(800,600);
-        menuBarLayout = new MenuBarLayout();
+        mainPanel.setSize(winWidth,winHeight);
 
+        menuBarLayout = new MenuBarLayout();
         frame.add(mainPanel);
 
         ButtonLayout buttonLayout = new ButtonLayout();
         menuBarLayout = new MenuBarLayout();
 
-        frame.setJMenuBar(menuBarLayout.menuBar);
-        frame.setLocationRelativeTo(null);
+        frame.setJMenuBar(MenuBarLayout.menuBar);
+        frame.setLocation((scrWidth / 2) - (winWidth / 2),(scrHeight / 2) - (winHeight / 2));
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

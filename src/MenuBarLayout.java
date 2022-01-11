@@ -22,6 +22,7 @@ public class MenuBarLayout implements ActionListener {
     int elapsedTime = 0;
     int minutes = 0;
     int seconds = 0;
+    int secondCounter = 0; //create another second variable because of error
     String minutesShow;
     String secondsShow;
     public JLabel wpm;
@@ -57,16 +58,17 @@ public class MenuBarLayout implements ActionListener {
         secondsShow = String.format("%02d", seconds);
         mistakeCounter = new JLabel();
         timer = new Timer(1000, e -> {
+            secondCounter+=1;
             elapsedTime += 1000;
             minutes = (elapsedTime / 60000) % 60;
             seconds = (elapsedTime / 1000) % 60;
-            wordsPerMinute = CheckText.charCount / seconds;
+            wordsPerMinute = CheckText.charCount / secondCounter;
             minutesShow = String.format("%02d", minutes);
             secondsShow = String.format("%02d", seconds);
             stopWatch.setText("Час " + minutesShow + ":" + secondsShow + "  ");
             mistakeCounter.setText("Помилки: " + mistakes);
             wpm.setText("символів за секунду: " + wordsPerMinute);
-            System.out.print(wordsPerMinute + " ");
+            //System.out.print(wordsPerMinute + " ");
         });
 
         stopWatch.setText("Час: " + minutesShow + ":" + secondsShow + " ");

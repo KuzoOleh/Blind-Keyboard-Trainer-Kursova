@@ -1,12 +1,16 @@
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -20,8 +24,6 @@ public class CheckText  {
     ButtonLayout buttonLayout;
 
     public  JPanel textLayout;
-    JPanel outputTextLayout;
-    JPanel inputTextLayout;
 
     StyleContext context = StyleContext.getDefaultStyleContext();
 
@@ -38,18 +40,14 @@ public class CheckText  {
         textLayout = new JPanel();
         textLayout.setLayout(new GridLayout(2,1));
 
-
         outputText = new JTextPane();
-        outputText.setText("Quick Brown Fox Jumps OVER The Lazy Dog");
+        //outputText.setText("Quick Brown Fox Jumps OVER The Lazy Dog");
         //outputText.setText("Все-таки кодировка не була проблемою, лол");
         //outputText.setText("what if i try it without upper case?");
         outputText.setFont(font);
         outputText.setEditable(false);
 
 
-        outputTextLayout = new JPanel();
-        outputTextLayout.setLayout(new BorderLayout());
-        outputTextLayout.add(outputText);
 
         inputText = new JTextPane();
         inputText.setBackground(Color.GRAY);
@@ -73,7 +71,7 @@ public class CheckText  {
             }
         });
 
-        textLayout.add(outputTextLayout);
+        textLayout.add(outputText);
         textLayout.add(inputText);
 
     }
@@ -88,6 +86,7 @@ public class CheckText  {
 
             String current = inputText.getText();
 
+            //System.out.println(cText.getOutputText.length());
             if (backSpace != KeyEvent.VK_BACK_SPACE) {
                 //if cText1 current char is equal to cText2 char set the foreground magenta
                 try {
@@ -113,13 +112,15 @@ public class CheckText  {
                         MenuBarLayout.menuBar.add(MenuBarLayout.mistakeCounter);
                         if((shiftButton == KeyEvent.VK_SHIFT)||(controlButton == KeyEvent.VK_CONTROL)){
                         MenuBarLayout.mistakes--;
+                        //charCount--;
 
                             doc.remove(current.length(),1);
                         }
 
-                        if (charCount == cText.getOutputText.length()){
-                            MainFrame.menuBarLayout.timer.stop();
-                        }
+                    }
+
+                    if (charCount == cText.getOutputText.length()){
+                        MainFrame.menuBarLayout.timer.stop();
                     }
 
                 } catch (Exception ex) {
