@@ -10,7 +10,6 @@ import java.awt.event.KeyEvent;
 public class CheckText  {
 
     public static int charCount = 0;
-
     public static JTextPane inputText;
     public static JTextPane outputText;
     StyledDocument doc;
@@ -27,9 +26,8 @@ public class CheckText  {
 
     AttributeSet attributeSetGreen = context.addAttribute(context.getEmptySet(),
             StyleConstants.Foreground, Color.BLACK);
-
+    
     public CheckText() {
-
 
         outputTextLayout = new JPanel(new BorderLayout());
         inputTextLayout = new JPanel(new BorderLayout());
@@ -40,15 +38,11 @@ public class CheckText  {
         textLayout.setLayout(new GridLayout(2,1));
 
         outputText = new JTextPane();
-        //outputText.setText("Quick Brown Fox Jumps OVER The Lazy Dog");
-        //outputText.setText("Все-таки кодировка не була проблемою, лол");
-        //outputText.setText("what if i try it without upper case?");
         outputText.setFont(font);
         outputText.setEditable(false);
 
         outputTextScrollPane = new JScrollPane(outputText);
         inputTextScrollPane = new JScrollPane(inputText);
-
 
         inputText = new JTextPane();
         inputText.setBackground(Color.GRAY);
@@ -69,7 +63,6 @@ public class CheckText  {
                 }
             }
         });
-
         outputTextLayout.add(outputTextScrollPane);
 
         textLayout.add(outputTextLayout);
@@ -123,7 +116,6 @@ public class CheckText  {
                             "Помилка", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-
                 doc.remove(current.length() - 1, 1);
                 charCount--;
             }
@@ -153,15 +145,16 @@ public class CheckText  {
         int offset = totalCharacters;
 
         public RowCounter(){
+            //delete broken lines in inputText
             try{
             while(offset > 0){
                 offset = Utilities.getRowStart(outputText,offset) - 1;
                 lineCount++;
+
                 }
             }
             catch(BadLocationException ex){
                 ex.printStackTrace();
-
             }
         }
     }

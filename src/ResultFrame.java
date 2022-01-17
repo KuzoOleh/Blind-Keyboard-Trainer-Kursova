@@ -24,7 +24,7 @@ public class ResultFrame {
         panel.setLayout(new GridLayout(4,1));
 
     mistake_Result = new JTextArea();
-    mistake_Result.setText("Кількість помилок: " + String.valueOf(MenuBarLayout.mistakes));
+    mistake_Result.setText("Кількість помилок: " + MenuBarLayout.mistakes);
 
     timer = new JTextArea();
     timer.setText("Загальний час: " + MenuBarLayout.minutes + ":" + MenuBarLayout.seconds);
