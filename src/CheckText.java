@@ -121,15 +121,13 @@ public class CheckText  {
                         MenuBarLayout.menuBar.add(MenuBarLayout.mistakeCounter);
                         if((shiftButton == KeyEvent.VK_SHIFT)||(controlButton == KeyEvent.VK_CONTROL)){
                         MenuBarLayout.mistakes--;
-                        //charCount--;
+                        charCount--;
 
                             doc.remove(current.length(),1);
                         }
                     }
 
-                    if (charCount == cText.getOutputText.length()){
-                        MainFrame.menuBarLayout.timer.stop();
-                    }
+
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Ви не можете більше дописувати текст",
                             "Помилка", JOptionPane.ERROR_MESSAGE);
@@ -138,6 +136,12 @@ public class CheckText  {
 
                 doc.remove(current.length() - 1, 1);
                 charCount--;
+            }
+            if (charCount == cText.getOutputText.length()){
+
+                ResultFrame resultFrame = new ResultFrame();
+                resultFrame.frame.setVisible(true);
+                MainFrame.menuBarLayout.timer.stop();
             }
         }
 
