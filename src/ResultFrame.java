@@ -27,7 +27,7 @@ public class ResultFrame {
     mistake_Result.setText(String.valueOf(MenuBarLayout.mistakes));
 
     timer = new JTextArea();
-    timer.setText(MenuBarLayout.minutes + "хв. " + MenuBarLayout.seconds + "с.");
+    timer.setText(MenuBarLayout.minutesShow + "хв." + MenuBarLayout.secondsShow +"с.");
 
     panel.add(mistake_Result);
     panel.add(timer);
