@@ -64,7 +64,6 @@ public class MenuBarLayout implements ActionListener {
             stopWatch.setText("Час " + minutesShow + ":" + secondsShow + "  ");
             mistakeCounter.setText("Помилки: " + mistakes);
             wpm.setText("символів за секунду: " + wordsPerMinute);
-
         });
 
         stopWatch.setText("Час: " + minutesShow + ":" + secondsShow + " ");
@@ -76,7 +75,6 @@ public class MenuBarLayout implements ActionListener {
         menuBar.add(info);
 
         file.add(openFile);
-
 
         window.add(clearWindow);
         window.add(closeProgram);
@@ -96,7 +94,6 @@ public class MenuBarLayout implements ActionListener {
 
         about.addActionListener(this);
         rules.addActionListener(this);
-
     }
 
     @Override
@@ -166,5 +163,3 @@ public class MenuBarLayout implements ActionListener {
             }
         }
     }
-
-

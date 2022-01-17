@@ -1,6 +1,5 @@
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
-import java.awt.Dimension;
 
 public class RulesWindow {
     JFrame frame;
@@ -13,7 +12,6 @@ public class RulesWindow {
     public RulesWindow(){
         frame = new JFrame();
         frame.setSize(scrWidth,scrHeight);
-
         frame.setLocation((scrWidth / 2) - (winWidth / 2),(scrHeight / 2) - (winHeight / 2));
         placeholder = new JTextArea();
         placeholder.setText("Placeholder");

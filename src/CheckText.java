@@ -2,15 +2,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyleContext;
-import javax.swing.text.StyledDocument;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridLayout;
+import javax.swing.text.*;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -70,24 +63,23 @@ public class CheckText  {
 
                 try {
                     new Check(e);
+
                 } catch (BadLocationException badLocationException) {
                     badLocationException.printStackTrace();
                 }
             }
         });
 
-
         outputTextLayout.add(outputTextScrollPane);
 
         textLayout.add(outputTextLayout);
         textLayout.add(inputText);
 
-
-
     }
     public class Check {
         public Check(KeyEvent e) throws BadLocationException {
 
+            new RowCounter();
             char C = e.getKeyChar();
             fillCharArray cText = new fillCharArray();
             int backSpace = e.getKeyCode();
@@ -107,7 +99,6 @@ public class CheckText  {
                         if(charCount == 1){
                             MainFrame.menuBarLayout.timer.start();
                         }
-
                     }
                     //if cText1 current char is not equal to cText2 char set the foreground red
                     if (C != cText.getOutputText.charAt(cText.getInputText.length())) {
@@ -127,7 +118,6 @@ public class CheckText  {
                         }
                     }
 
-
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Ви не можете більше дописувати текст",
                             "Помилка", JOptionPane.ERROR_MESSAGE);
@@ -144,7 +134,6 @@ public class CheckText  {
                 MainFrame.menuBarLayout.timer.stop();
             }
         }
-
     }
     public class  fillCharArray {
 
@@ -156,6 +145,27 @@ public class CheckText  {
             getOutputText = outputText.getText();
             getInputText = inputText.getText();
 
+        }
+    }
+
+    public class RowCounter{
+        fillCharArray charText = new fillCharArray();
+        int totalCharacters = charText.getOutputText.length();
+       public int lineCount = (totalCharacters == 0) ? 1 : 0;
+        int offset = totalCharacters;
+
+        public RowCounter(){
+            try{
+            while(offset > 0){
+                offset = Utilities.getRowStart(outputText,offset) - 1;
+                lineCount++;
+                System.out.print(lineCount);
+            }
+            }
+            catch(BadLocationException ex){
+                ex.printStackTrace();
+
+            }
         }
     }
 }
