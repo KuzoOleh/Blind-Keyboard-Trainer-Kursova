@@ -15,16 +15,16 @@ import java.util.Scanner;
 public class MenuBarLayout implements ActionListener {
 
     Timer timer;
-    int wordsPerMinute = 0;
+    public static int wordsPerMinute = 0;
     int elapsedTime = 0;
-    int minutes = 0;
-    int seconds = 0;
+    public static int minutes = 0;
+    public static int seconds = 0;
     int secondCounter = 0; //create another second variable because of error
-    public static String minutesShow = null;
-    public static String secondsShow = null;
-    public JLabel wpm;
+     String minutesShow;
+     String secondsShow;
+     JLabel wpm;
 
-    JLabel stopWatch;
+    public static JLabel stopWatch = null;
     public static JLabel mistakeCounter;
     public static int mistakes = 0; //count how much user made a mistake
 

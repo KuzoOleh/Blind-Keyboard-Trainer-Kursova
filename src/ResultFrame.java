@@ -24,12 +24,17 @@ public class ResultFrame {
         panel.setLayout(new GridLayout(4,1));
 
     mistake_Result = new JTextArea();
-    mistake_Result.setText(String.valueOf(MenuBarLayout.mistakes));
+    mistake_Result.setText("Кількість помилок: " + String.valueOf(MenuBarLayout.mistakes));
 
     timer = new JTextArea();
-    timer.setText(MenuBarLayout.minutesShow + "хв." + MenuBarLayout.secondsShow +"с.");
+    timer.setText("Загальний час: " + MenuBarLayout.minutes + ":" + MenuBarLayout.seconds);
+
+    spm = new JTextArea();
+    spm.setText("Символів за секунду: " + MenuBarLayout.wordsPerMinute);
 
     panel.add(mistake_Result);
     panel.add(timer);
+    panel.add(spm);
+    frame.add(panel);
     }
 }
