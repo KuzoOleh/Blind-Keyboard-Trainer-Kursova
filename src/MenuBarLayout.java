@@ -95,7 +95,7 @@ public class MenuBarLayout implements ActionListener {
         closeProgram.addActionListener(this);
 
         about.addActionListener(this);
-        info.addActionListener(this);
+        rules.addActionListener(this);
 
     }
 
@@ -138,7 +138,6 @@ public class MenuBarLayout implements ActionListener {
                 CheckText.charCount = 0;
 
                 timer.stop();
-
 
                 CheckText.inputText.setText("");
                 wpm.setText("символів за секунду: 0 ");

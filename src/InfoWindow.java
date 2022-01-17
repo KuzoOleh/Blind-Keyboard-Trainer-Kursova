@@ -22,12 +22,15 @@ public class InfoWindow {
 
         scrWidth = (int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         scrHeight = (int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-        frame.setLocation((scrHeight / 2) - (winHeight / 2),(scrWidth / 2)-(winWidth / 2));
+
+        frame.setLocation((scrWidth / 2) - (winWidth / 2),(scrHeight / 2) - (winHeight / 2));
         
         projectName = new JTextArea();
+        projectName.setEditable(false);
         projectName.setText("Програма тренажер сліпого друку");
 
         author = new JTextArea();
+        author.setEditable(false);
         author.setText("Автор програми - Кузьо Олег");
 
         panel.add(projectName);
