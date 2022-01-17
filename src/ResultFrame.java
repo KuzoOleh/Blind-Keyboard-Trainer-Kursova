@@ -1,6 +1,5 @@
-import javax.swing.JFrame;
-import javax.swing.JTextArea;
-import javax.swing.WindowConstants;
+import javax.swing.*;
+import java.awt.*;
 
 public class ResultFrame {
     int winWidth = 400;
@@ -9,7 +8,10 @@ public class ResultFrame {
     int scrWidth;
 
     JFrame frame;
+    JPanel panel;
     JTextArea mistake_Result;
+    JTextArea timer;
+    JTextArea spm;
 
     public ResultFrame(){
         frame = new JFrame();
@@ -18,8 +20,16 @@ public class ResultFrame {
         frame.setLocation((scrWidth / 2) - (winWidth / 2),(scrHeight / 2) - (winHeight / 2));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        panel = new JPanel();
+        panel.setLayout(new GridLayout(4,1));
+
     mistake_Result = new JTextArea();
     mistake_Result.setText(String.valueOf(MenuBarLayout.mistakes));
-    frame.add(mistake_Result);
+
+    timer = new JTextArea();
+    timer.setText(MenuBarLayout.minutes + "хв. " + MenuBarLayout.seconds + "с.");
+
+    panel.add(mistake_Result);
+    panel.add(timer);
     }
 }

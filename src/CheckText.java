@@ -141,10 +141,8 @@ public class CheckText  {
         String getInputText;
 
         public fillCharArray() {
-
             getOutputText = outputText.getText();
             getInputText = inputText.getText();
-
         }
     }
 
@@ -159,8 +157,7 @@ public class CheckText  {
             while(offset > 0){
                 offset = Utilities.getRowStart(outputText,offset) - 1;
                 lineCount++;
-                System.out.print(lineCount);
-            }
+                }
             }
             catch(BadLocationException ex){
                 ex.printStackTrace();
