@@ -15,16 +15,16 @@ import java.util.Scanner;
 public class MenuBarLayout implements ActionListener {
 
     Timer timer;
-    int wordsPerMinute = 0;
+    public static int wordsPerMinute = 0;
     int elapsedTime = 0;
-    int minutes = 0;
-    int seconds = 0;
+    public static int minutes = 0;
+    public static int seconds = 0;
     int secondCounter = 0; //create another second variable because of error
-    String minutesShow;
-    String secondsShow;
-    public JLabel wpm;
+     String minutesShow;
+     String secondsShow;
+     JLabel wpm;
 
-    JLabel stopWatch;
+    public static JLabel stopWatch = null;
     public static JLabel mistakeCounter;
     public static int mistakes = 0; //count how much user made a mistake
 
@@ -64,7 +64,6 @@ public class MenuBarLayout implements ActionListener {
             stopWatch.setText("Час " + minutesShow + ":" + secondsShow + "  ");
             mistakeCounter.setText("Помилки: " + mistakes);
             wpm.setText("символів за секунду: " + wordsPerMinute);
-
         });
 
         stopWatch.setText("Час: " + minutesShow + ":" + secondsShow + " ");
@@ -76,7 +75,6 @@ public class MenuBarLayout implements ActionListener {
         menuBar.add(info);
 
         file.add(openFile);
-
 
         window.add(clearWindow);
         window.add(closeProgram);
@@ -95,8 +93,7 @@ public class MenuBarLayout implements ActionListener {
         closeProgram.addActionListener(this);
 
         about.addActionListener(this);
-        info.addActionListener(this);
-
+        rules.addActionListener(this);
     }
 
     @Override
@@ -124,9 +121,11 @@ public class MenuBarLayout implements ActionListener {
                 file = fileChooser.getSelectedFile();
                 try {
                     scan = new Scanner(file);
+                    StringBuilder builder = new StringBuilder();
                     while(scan.hasNextLine()){
                         line = scan.nextLine();
-                        CheckText.outputText.setText(line);
+                        builder.append(line);
+                        CheckText.outputText.setText(CheckText.outputText.getText() + line + "\n");
                     }
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
@@ -138,7 +137,6 @@ public class MenuBarLayout implements ActionListener {
                 CheckText.charCount = 0;
 
                 timer.stop();
-
 
                 CheckText.inputText.setText("");
                 wpm.setText("символів за секунду: 0 ");
@@ -167,5 +165,3 @@ public class MenuBarLayout implements ActionListener {
             }
         }
     }
-
-

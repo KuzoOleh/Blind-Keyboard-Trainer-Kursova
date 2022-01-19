@@ -1,31 +1,22 @@
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
-import javax.swing.JScrollPane;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class CheckText  {
+public class CheckText {
 
     public static int charCount = 0;
-
     public static JTextPane inputText;
     public static JTextPane outputText;
     StyledDocument doc;
-    public  JPanel textLayout;
-    JPanel outputTextLayout;
-    JPanel inputTextLayout;
-    JScrollPane outputTextScrollPane;
-    JScrollPane inputTextScrollPane;
+    public JPanel textLayout;
 
     StyleContext context = StyleContext.getDefaultStyleContext();
 
@@ -37,25 +28,14 @@ public class CheckText  {
 
     public CheckText() {
 
-
-        outputTextLayout = new JPanel(new BorderLayout());
-        inputTextLayout = new JPanel(new BorderLayout());
-
         Font font = new Font("comic-sans", Font.PLAIN, 16);
 
         textLayout = new JPanel();
-        textLayout.setLayout(new GridLayout(2,1));
+        textLayout.setLayout(new GridLayout(2, 1));
 
         outputText = new JTextPane();
-        //outputText.setText("Quick Brown Fox Jumps OVER The Lazy Dog");
-        //outputText.setText("Все-таки кодировка не була проблемою, лол");
-        //outputText.setText("what if i try it without upper case?");
         outputText.setFont(font);
         outputText.setEditable(false);
-
-        outputTextScrollPane = new JScrollPane(outputText);
-        inputTextScrollPane = new JScrollPane(inputText);
-
 
         inputText = new JTextPane();
         inputText.setBackground(Color.GRAY);
@@ -64,25 +44,22 @@ public class CheckText  {
 
         doc = inputText.getStyledDocument();
 
+
         inputText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
 
                 try {
                     new Check(e);
+                    //new RowCounter();
                 } catch (BadLocationException badLocationException) {
                     badLocationException.printStackTrace();
                 }
             }
         });
 
-
-        outputTextLayout.add(outputTextScrollPane);
-
-        textLayout.add(outputTextLayout);
+        textLayout.add(outputText);
         textLayout.add(inputText);
-
-
 
     }
     public class Check {
@@ -104,54 +81,67 @@ public class CheckText  {
                         doc.insertString(doc.getLength(), String.valueOf(C), attributeSetGreen);
 
                         charCount++;
-                        if(charCount == 1){
+                            if (C == '.') {
+                            int startIndex = cText.getOutputText.indexOf(cText.getOutputText);
+                            int endIndex = cText.getOutputText.indexOf(".");
+                            String replacement = outputText.getText();
+                            String toBeReplaced = outputText.getText();
+                            toBeReplaced = toBeReplaced.substring(startIndex, endIndex + 1);
+                            replacement.replace(toBeReplaced,"");
+                            outputText.setText(replacement);
+                            System.out.print(toBeReplaced);
+                            }
+
+                        if(C =='.') {
+                            System.out.println("fuck you");
+                        }
+                        if (charCount == 1) {
                             MainFrame.menuBarLayout.timer.start();
                         }
-
                     }
                     //if cText1 current char is not equal to cText2 char set the foreground red
                     if (C != cText.getOutputText.charAt(cText.getInputText.length())) {
                         charCount++;
-                        if(charCount == 1){
+                        if (charCount == 1) {
                             MainFrame.menuBarLayout.timer.start();
                         }
                         doc.insertString(doc.getLength(), String.valueOf(C), attributeSetRed);
                         MenuBarLayout.mistakes++;
                         MenuBarLayout.mistakeCounter.setText("Помилки: " + MenuBarLayout.mistakes);
                         MenuBarLayout.menuBar.add(MenuBarLayout.mistakeCounter);
-                        if((shiftButton == KeyEvent.VK_SHIFT)||(controlButton == KeyEvent.VK_CONTROL)){
-                        MenuBarLayout.mistakes--;
-                        //charCount--;
+                        if ((shiftButton == KeyEvent.VK_SHIFT) || (controlButton == KeyEvent.VK_CONTROL)) {
+                            MenuBarLayout.mistakes--;
+                            charCount--;
 
-                            doc.remove(current.length(),1);
+                            doc.remove(current.length(), 1);
                         }
                     }
 
-                    if (charCount == cText.getOutputText.length()){
-                        MainFrame.menuBarLayout.timer.stop();
-                    }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Ви не можете більше дописувати текст",
                             "Помилка", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-
                 doc.remove(current.length() - 1, 1);
                 charCount--;
             }
-        }
+            if (charCount == cText.getOutputText.length()) {
 
+                ResultFrame resultFrame = new ResultFrame();
+                resultFrame.frame.setVisible(true);
+                MainFrame.menuBarLayout.timer.stop();
+            }
+        }
     }
-    public class  fillCharArray {
+
+    public class fillCharArray {
 
         String getOutputText;
         String getInputText;
 
         public fillCharArray() {
-
             getOutputText = outputText.getText();
             getInputText = inputText.getText();
-
         }
     }
 }
