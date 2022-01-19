@@ -121,9 +121,11 @@ public class MenuBarLayout implements ActionListener {
                 file = fileChooser.getSelectedFile();
                 try {
                     scan = new Scanner(file);
+                    StringBuilder builder = new StringBuilder();
                     while(scan.hasNextLine()){
                         line = scan.nextLine();
-                        CheckText.outputText.setText(line);
+                        builder.append(line);
+                        CheckText.outputText.setText(CheckText.outputText.getText() + line + "\n");
                     }
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
