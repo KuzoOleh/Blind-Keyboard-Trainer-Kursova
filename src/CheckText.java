@@ -87,14 +87,16 @@ public class CheckText {
                             String replacement = outputText.getText();
                             String toBeReplaced = outputText.getText();
                             toBeReplaced = toBeReplaced.substring(startIndex, endIndex + 1);
-                            replacement.replace(toBeReplaced,"");
+                            replacement = replacement.replace(toBeReplaced,"");
                             outputText.setText(replacement);
-                            System.out.print(toBeReplaced);
+                            inputText.setText("");
+                            System.out.print(replacement);
+                            System.out.println("fuck you");
+                            charCount = 0;
                             }
 
-                        if(C =='.') {
-                            System.out.println("fuck you");
-                        }
+
+
                         if (charCount == 1) {
                             MainFrame.menuBarLayout.timer.start();
                         }
