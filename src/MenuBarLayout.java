@@ -20,7 +20,7 @@ public class MenuBarLayout implements ActionListener {
     public static int localCharCount = 0;
     public static int minutes = 0;
     public static int seconds = 0;
-    int secondCounter = 0; //create another second variable because of error
+    public static int secondCounter = 1; //create another second variable because of error
      String minutesShow;
      String secondsShow;
      JLabel wpm;
@@ -45,7 +45,6 @@ public class MenuBarLayout implements ActionListener {
     JMenuItem about = new JMenuItem("про програму");
     JMenuItem rules = new JMenuItem("Правила");
 
-
     public MenuBarLayout() {
         menuBar = new JMenuBar();
         mistakeCounter = new JLabel();
@@ -60,14 +59,15 @@ public class MenuBarLayout implements ActionListener {
             elapsedTime += 1000;
             minutes = (elapsedTime / 60000) % 60;
             seconds = (elapsedTime / 1000) % 60;
-            wordsPerMinute = CheckText.charCount / secondCounter;
-            localCharCount += (wordsPerMinute)/5;
+            wordsPerMinute = (int)((((double)CheckText.charCount / 5) / secondCounter) * 60);
+
+            //localCharCount += wordsPerMinute;
             minutesShow = String.format("%02d", minutes);
             secondsShow = String.format("%02d", seconds);
             stopWatch.setText("Час " + minutesShow + ":" + secondsShow + "  ");
             mistakeCounter.setText("Помилки: " + mistakes);
             wpm.setText("символів за секунду: " + wordsPerMinute);
-            System.out.println(localCharCount);
+            System.out.println(wordsPerMinute);
         });
 
         stopWatch.setText("Час: " + minutesShow + ":" + secondsShow + " ");

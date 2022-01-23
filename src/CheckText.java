@@ -6,7 +6,9 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -90,8 +92,6 @@ public class CheckText {
                             replacement = replacement.replace(toBeReplaced,"");
                             outputText.setText(replacement);
                             inputText.setText("");
-                            System.out.print(replacement);
-                            System.out.println("fuck you");
                             charCount = 0;
                             }
 
@@ -128,7 +128,6 @@ public class CheckText {
                 charCount--;
             }
             if (charCount == cText.getOutputText.length()) {
-
                 ResultFrame resultFrame = new ResultFrame();
                 resultFrame.frame.setVisible(true);
                 MainFrame.menuBarLayout.timer.stop();

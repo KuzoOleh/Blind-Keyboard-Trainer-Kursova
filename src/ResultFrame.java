@@ -21,7 +21,7 @@ public class ResultFrame {
         frame.setSize(winWidth,winHeight);
         frame.setJMenuBar(MenuBarLayout.menuBar);
         frame.setLocation((scrWidth / 2) - (winWidth / 2),(scrHeight / 2) - (winHeight / 2));
-        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 
         panel = new JPanel();
         panel.setLayout(new GridLayout(4,1));
@@ -33,7 +33,7 @@ public class ResultFrame {
     timer.setText("Загальний час: " + MenuBarLayout.minutes + ":" + MenuBarLayout.seconds);
 
     spm = new JTextArea();
-    spm.setText("Символів за секунду: " + MenuBarLayout.localCharCount);
+    spm.setText("Символів за секунду: " + MenuBarLayout.wordsPerMinute);
 
     panel.add(mistake_Result);
     panel.add(timer);
