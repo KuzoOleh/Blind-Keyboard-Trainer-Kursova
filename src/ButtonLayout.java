@@ -1,4 +1,8 @@
-import javax.swing.*;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -15,7 +19,9 @@ public class ButtonLayout {
         KeyboardPanel = new JPanel();
         KeyboardPanel.setSize(350,200);
         KeyboardPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+    //initializing virtual keyboard
 
+        //row 1
         JButton buttonOem3 = new Buttons("`", "~", 45, 40, Color.PINK, KeyEvent.VK_BACK_QUOTE);
         JButton button1 = new Buttons("1", "!", 45, 40, Color.PINK, KeyEvent.VK_1);
         JButton button2 = new Buttons("2", "@", 45, 40, Color.PINK, KeyEvent.VK_2);
@@ -31,6 +37,7 @@ public class ButtonLayout {
         JButton buttonEquals = new Buttons("=", "+", 45, 40, Color.GREEN, KeyEvent.VK_EQUALS);
         JButton buttonBackSpace = new ControlButtons("Backspace", 115, 40, Color.LIGHT_GRAY);
 
+        //row 2
         JButton buttonTab = new ControlButtons("Tab", 75, 40, Color.LIGHT_GRAY);
         JButton buttonQ = new Buttons("й", "Й", 45, 40, Color.PINK, KeyEvent.VK_Q);
         JButton buttonW = new Buttons("ц", "Ц", 45, 40, Color.YELLOW, KeyEvent.VK_W);
@@ -46,6 +53,7 @@ public class ButtonLayout {
         JButton buttonSquareParenthesisClose = new Buttons("]", "}", 45, 40, Color.GREEN, KeyEvent.VK_CLOSE_BRACKET);
         JButton buttonSlashLeft = new Buttons("\\", "|", 85, 40, Color.GREEN, KeyEvent.VK_BACK_SLASH);
 
+        //row 3
         JButton buttonCapsLock = new ControlButtons("Capslock", 100, 40, Color.LIGHT_GRAY);
         JButton buttonA = new Buttons("ф", "Ф", 45, 40, Color.PINK, KeyEvent.VK_A);
         JButton buttonS = new Buttons("і", "І", 45, 40, Color.YELLOW, KeyEvent.VK_S);
@@ -60,6 +68,7 @@ public class ButtonLayout {
         JButton buttonQuote = new Buttons("є", "Є", 45, 40, Color.GREEN, KeyEvent.VK_QUOTE);
         JButton buttonEnter = new ControlButtons("Enter", 110, 40, Color.LIGHT_GRAY);
 
+        //row 4
         JButton buttonLeftShift = new ControlButtons("Shift", 120, 40, Color.LIGHT_GRAY);
         JButton buttonZ = new Buttons("z", "Z", 45, 40, Color.PINK, KeyEvent.VK_Z);
         JButton buttonX = new Buttons("x", "X", 45, 40, Color.YELLOW, KeyEvent.VK_X);
@@ -73,6 +82,7 @@ public class ButtonLayout {
         JButton buttonRightSlash = new Buttons("/", "?", 45, 40, Color.GREEN, KeyEvent.VK_SLASH);
         JButton buttonRightShift = new ControlButtons("Shift", 140, 40, Color.LIGHT_GRAY);
 
+        //row 5
         JButton buttonRightCtrl = new ControlButtons("Ctrl", 75, 40, Color.LIGHT_GRAY);
         JButton buttonRightWin = new ControlButtons("Win", 75, 40, Color.LIGHT_GRAY);
         JButton buttonRightAlt = new ControlButtons("Alt", 75, 40, Color.LIGHT_GRAY);
@@ -81,7 +91,7 @@ public class ButtonLayout {
         JButton buttonLeftWin = new ControlButtons("Win", 75, 40, Color.LIGHT_GRAY);
         JButton buttonLeftCtrl = new ControlButtons("Ctrl", 75, 40, Color.LIGHT_GRAY);
 
-        
+        //adding buttons to window
         KeyboardPanel.add(buttonOem3);
         KeyboardPanel.add(button1);
         KeyboardPanel.add(button2);
@@ -149,6 +159,7 @@ public class ButtonLayout {
     }
     public static class Buttons extends JButton {
 
+        //default setting for buttons
         public Buttons(String name, String shiftName, int width, int height, Color background, int key){
 
             setPreferredSize(new Dimension(width,height));
@@ -157,6 +168,9 @@ public class ButtonLayout {
             setBackground(background);
 
 
+
+            //set virtual keyboard
+            //if button is pressed, paint bottom to red
             Action pressedButton = new AbstractAction() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -165,6 +179,7 @@ public class ButtonLayout {
                 }
             };
 
+            //if button is released, turn default color back
             Action releasedButton = new AbstractAction() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -188,7 +203,6 @@ public class ButtonLayout {
             setText(name);
             setPreferredSize(new Dimension(width, height));
             setBackground(background);
-
         }
     }
     }
