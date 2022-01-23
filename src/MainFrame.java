@@ -4,7 +4,7 @@ import javax.swing.WindowConstants;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
-
+//initializing main window
 public class MainFrame {
     JFrame frame;
     JPanel mainPanel;
@@ -26,6 +26,7 @@ public class MainFrame {
         mainPanel = new JPanel();
         mainPanel.setSize(winWidth,winHeight);
 
+        //initializing MenuBarLayout and ButtonLayout modules
         menuBarLayout = new MenuBarLayout();
         frame.add(mainPanel);
 
@@ -33,14 +34,17 @@ public class MainFrame {
         menuBarLayout = new MenuBarLayout();
 
         frame.setJMenuBar(MenuBarLayout.menuBar);
+        //setting window to center
         frame.setLocation((scrWidth / 2) - (winWidth / 2),(scrHeight / 2) - (winHeight / 2));
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        //adding modules to main window
         mainPanel.add(checkText.textLayout);
         mainPanel.add(buttonLayout.KeyboardPanel);
-        mainPanel.setLayout(new GridLayout(2,1));
 
+
+        mainPanel.setLayout(new GridLayout(2,1));
         frame.setSize(new Dimension(790, 550));
         frame.setResizable(false);
     }

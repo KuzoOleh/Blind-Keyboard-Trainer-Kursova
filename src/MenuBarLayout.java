@@ -17,6 +17,7 @@ public class MenuBarLayout implements ActionListener {
     Timer timer;
     public static int wordsPerMinute = 0;
     int elapsedTime = 0;
+    public static int localCharCount = 0;
     public static int minutes = 0;
     public static int seconds = 0;
     int secondCounter = 0; //create another second variable because of error
@@ -26,7 +27,7 @@ public class MenuBarLayout implements ActionListener {
 
     public static JLabel stopWatch = null;
     public static JLabel mistakeCounter;
-    public static int mistakes = 0; //count how much user made a mistake
+    public static int mistakes = 0; //count how much user have made a mistake
 
     JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
@@ -53,17 +54,20 @@ public class MenuBarLayout implements ActionListener {
         minutesShow = String.format("%02d", minutes);
         secondsShow = String.format("%02d", seconds);
         mistakeCounter = new JLabel();
+        //set timer
         timer = new Timer(1000, e -> {
             secondCounter+=1;
             elapsedTime += 1000;
             minutes = (elapsedTime / 60000) % 60;
             seconds = (elapsedTime / 1000) % 60;
             wordsPerMinute = CheckText.charCount / secondCounter;
+            localCharCount += (wordsPerMinute)/5;
             minutesShow = String.format("%02d", minutes);
             secondsShow = String.format("%02d", seconds);
             stopWatch.setText("Час " + minutesShow + ":" + secondsShow + "  ");
             mistakeCounter.setText("Помилки: " + mistakes);
             wpm.setText("символів за секунду: " + wordsPerMinute);
+            System.out.println(localCharCount);
         });
 
         stopWatch.setText("Час: " + minutesShow + ":" + secondsShow + " ");
@@ -107,7 +111,7 @@ public class MenuBarLayout implements ActionListener {
             String line;
             CheckText.outputText.setText("");
             CheckText.inputText.setText("");
-            wpm.setText("символів за секунду: 0");
+            wpm.setText("символів за секунду: 0 ");
             mistakeCounter.setText("Помилки: 0 ");
             elapsedTime = 0;
 
@@ -135,7 +139,6 @@ public class MenuBarLayout implements ActionListener {
 
             if(e.getSource()==clearWindow){
                 CheckText.charCount = 0;
-
                 timer.stop();
 
                 CheckText.inputText.setText("");
@@ -155,11 +158,10 @@ public class MenuBarLayout implements ActionListener {
 
             if(e.getSource()==about){
                 InfoWindow openInfo = new InfoWindow();
-                System.out.print("I'm placeholder!");
                 openInfo.frame.setVisible(true);
             }
+
             if(e.getSource()==rules){
-                System.out.println("I'm placeholder too!");
                 RulesWindow rulesWindow = new RulesWindow();
                 rulesWindow.frame.setVisible(true);
             }

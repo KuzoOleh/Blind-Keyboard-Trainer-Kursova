@@ -6,7 +6,9 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -32,7 +34,7 @@ public class CheckText {
 
         textLayout = new JPanel();
         textLayout.setLayout(new GridLayout(2, 1));
-
+        //initializing OutputText
         outputText = new JTextPane();
         outputText.setFont(font);
         outputText.setEditable(false);
@@ -50,6 +52,7 @@ public class CheckText {
             public void keyReleased(KeyEvent e) {
 
                 try {
+                    //call every time when the button is pressed
                     new Check(e);
                     //new RowCounter();
                 } catch (BadLocationException badLocationException) {
@@ -81,6 +84,7 @@ public class CheckText {
                         doc.insertString(doc.getLength(), String.valueOf(C), attributeSetGreen);
 
                         charCount++;
+                        //if C is dot, delete written text
                             if (C == '.') {
                             int startIndex = cText.getOutputText.indexOf(cText.getOutputText);
                             int endIndex = cText.getOutputText.indexOf(".");
@@ -90,13 +94,10 @@ public class CheckText {
                             replacement = replacement.replace(toBeReplaced,"");
                             outputText.setText(replacement);
                             inputText.setText("");
-                            System.out.print(replacement);
-                            System.out.println("fuck you");
                             charCount = 0;
+
                             }
-
-
-
+                            //start timer
                         if (charCount == 1) {
                             MainFrame.menuBarLayout.timer.start();
                         }
@@ -135,7 +136,7 @@ public class CheckText {
             }
         }
     }
-
+//get text from inputText and OutputText
     public class fillCharArray {
 
         String getOutputText;

@@ -1,5 +1,8 @@
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.WindowConstants;
+import java.awt.GridLayout;
 
 public class ResultFrame {
     int winWidth = 400;
@@ -18,7 +21,7 @@ public class ResultFrame {
         frame.setSize(winWidth,winHeight);
         frame.setJMenuBar(MenuBarLayout.menuBar);
         frame.setLocation((scrWidth / 2) - (winWidth / 2),(scrHeight / 2) - (winHeight / 2));
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         panel = new JPanel();
         panel.setLayout(new GridLayout(4,1));
@@ -30,7 +33,7 @@ public class ResultFrame {
     timer.setText("Загальний час: " + MenuBarLayout.minutes + ":" + MenuBarLayout.seconds);
 
     spm = new JTextArea();
-    spm.setText("Символів за секунду: " + MenuBarLayout.wordsPerMinute);
+    spm.setText("Символів за секунду: " + MenuBarLayout.localCharCount);
 
     panel.add(mistake_Result);
     panel.add(timer);
