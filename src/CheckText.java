@@ -15,6 +15,7 @@ import java.awt.event.KeyEvent;
 public class CheckText {
 
     public static int charCount = 0;
+    public static int localCharCount = 0;
     public static JTextPane inputText;
     public static JTextPane outputText;
     StyledDocument doc;
@@ -83,6 +84,7 @@ public class CheckText {
                         doc.insertString(doc.getLength(), String.valueOf(C), attributeSetGreen);
 
                         charCount++;
+                        localCharCount++;
                             if (C == '.') {
                             int startIndex = cText.getOutputText.indexOf(cText.getOutputText);
                             int endIndex = cText.getOutputText.indexOf(".");
@@ -92,7 +94,7 @@ public class CheckText {
                             replacement = replacement.replace(toBeReplaced,"");
                             outputText.setText(replacement);
                             inputText.setText("");
-                            charCount = 0;
+                            localCharCount = 0;
                             }
 
 
@@ -104,6 +106,7 @@ public class CheckText {
                     //if cText1 current char is not equal to cText2 char set the foreground red
                     if (C != cText.getOutputText.charAt(cText.getInputText.length())) {
                         charCount++;
+                        localCharCount++;
                         if (charCount == 1) {
                             MainFrame.menuBarLayout.timer.start();
                         }
@@ -114,6 +117,7 @@ public class CheckText {
                         if ((shiftButton == KeyEvent.VK_SHIFT) || (controlButton == KeyEvent.VK_CONTROL)) {
                             MenuBarLayout.mistakes--;
                             charCount--;
+                            localCharCount--;
 
                             doc.remove(current.length(), 1);
                         }
@@ -126,8 +130,9 @@ public class CheckText {
             } else {
                 doc.remove(current.length() - 1, 1);
                 charCount--;
+                localCharCount--;
             }
-            if (charCount == cText.getOutputText.length()) {
+            if (localCharCount == cText.getOutputText.length()) {
                 ResultFrame resultFrame = new ResultFrame();
                 resultFrame.frame.setVisible(true);
                 MainFrame.menuBarLayout.timer.stop();
@@ -135,14 +140,15 @@ public class CheckText {
         }
     }
 
-    public class fillCharArray {
+}
 
-        String getOutputText;
-        String getInputText;
+class fillCharArray {
 
-        public fillCharArray() {
-            getOutputText = outputText.getText();
-            getInputText = inputText.getText();
-        }
+    String getOutputText;
+    String getInputText;
+
+    public fillCharArray() {
+        getOutputText = CheckText.outputText.getText();
+        getInputText =  CheckText.inputText.getText();
     }
 }

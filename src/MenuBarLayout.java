@@ -106,6 +106,7 @@ public class MenuBarLayout implements ActionListener {
         Scanner scan;
         if (e.getSource() == openFile) {
             CheckText.charCount = 0;
+            CheckText.localCharCount = 0;
 
             timer.stop();
             String line;
@@ -139,6 +140,7 @@ public class MenuBarLayout implements ActionListener {
 
             if(e.getSource()==clearWindow){
                 CheckText.charCount = 0;
+                CheckText.localCharCount = 0;
                 timer.stop();
 
                 CheckText.inputText.setText("");

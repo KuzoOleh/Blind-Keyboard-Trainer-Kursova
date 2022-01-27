@@ -19,77 +19,78 @@ public class ButtonLayout {
         KeyboardPanel = new JPanel();
         KeyboardPanel.setSize(350,200);
         KeyboardPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
     //initializing virtual keyboard
 
         //row 1
-        JButton buttonOem3 = new Buttons("`", "~", 45, 40, Color.PINK, KeyEvent.VK_BACK_QUOTE);
-        JButton button1 = new Buttons("1", "!", 45, 40, Color.PINK, KeyEvent.VK_1);
-        JButton button2 = new Buttons("2", "@", 45, 40, Color.PINK, KeyEvent.VK_2);
-        JButton button3 = new Buttons("3", "#", 45, 40, Color.YELLOW, KeyEvent.VK_3);
-        JButton button4 = new Buttons("4", "$", 45, 40, Color.GREEN, KeyEvent.VK_4);
-        JButton button5 = new Buttons("5", "%", 45, 40, Color.CYAN, KeyEvent.VK_5);
-        JButton button6 = new Buttons("6", "^", 45, 40, Color.CYAN, KeyEvent.VK_6);
-        JButton button7 = new Buttons("7", "&", 45, 40, Color.MAGENTA, KeyEvent.VK_7);
-        JButton button8 = new Buttons("8", "*", 45, 40, Color.MAGENTA, KeyEvent.VK_8);
-        JButton button9 = new Buttons("9", "(", 45, 40, Color.PINK, KeyEvent.VK_9);
-        JButton button0 = new Buttons("0", ")", 45, 40, Color.YELLOW, KeyEvent.VK_0);
-        JButton buttonMinus = new Buttons("-", "_", 45, 40, Color.GREEN, KeyEvent.VK_MINUS);
-        JButton buttonEquals = new Buttons("=", "+", 45, 40, Color.GREEN, KeyEvent.VK_EQUALS);
-        JButton buttonBackSpace = new ControlButtons("Backspace", 115, 40, Color.LIGHT_GRAY);
+        JButton buttonOem3 = new Buttons("`", 45, 40, Color.PINK, KeyEvent.VK_BACK_QUOTE);
+        JButton button1 = new Buttons("1",  45, 40, Color.PINK, KeyEvent.VK_1);
+        JButton button2 = new Buttons("2", 45, 40, Color.PINK, KeyEvent.VK_2);
+        JButton button3 = new Buttons("3", 45, 40, Color.YELLOW, KeyEvent.VK_3);
+        JButton button4 = new Buttons("4",  45, 40, Color.GREEN, KeyEvent.VK_4);
+        JButton button5 = new Buttons("5", 45, 40, Color.CYAN, KeyEvent.VK_5);
+        JButton button6 = new Buttons("6", 45, 40, Color.CYAN, KeyEvent.VK_6);
+        JButton button7 = new Buttons("7",  45, 40, Color.MAGENTA, KeyEvent.VK_7);
+        JButton button8 = new Buttons("8",  45, 40, Color.MAGENTA, KeyEvent.VK_8);
+        JButton button9 = new Buttons("9",  45, 40, Color.PINK, KeyEvent.VK_9);
+        JButton button0 = new Buttons("0",  45, 40, Color.YELLOW, KeyEvent.VK_0);
+        JButton buttonMinus = new Buttons("-",  45, 40, Color.GREEN, KeyEvent.VK_MINUS);
+        JButton buttonEquals = new Buttons("=",  45, 40, Color.GREEN, KeyEvent.VK_EQUALS);
+        JButton buttonBackSpace = new Buttons("Backspace", 115, 40, Color.LIGHT_GRAY, KeyEvent.VK_BACK_SPACE);
 
         //row 2
-        JButton buttonTab = new ControlButtons("Tab", 75, 40, Color.LIGHT_GRAY);
-        JButton buttonQ = new Buttons("й", "Й", 45, 40, Color.PINK, KeyEvent.VK_Q);
-        JButton buttonW = new Buttons("ц", "Ц", 45, 40, Color.YELLOW, KeyEvent.VK_W);
-        JButton buttonE = new Buttons("у", "У", 45, 40, Color.GREEN, KeyEvent.VK_E);
-        JButton buttonR = new Buttons("к", "К", 45, 40, Color.CYAN, KeyEvent.VK_R);
-        JButton buttonT = new Buttons("е", "Е", 45, 40, Color.CYAN, KeyEvent.VK_T);
-        JButton buttonY = new Buttons("н", "Н", 45, 40, Color.MAGENTA, KeyEvent.VK_Y);
-        JButton buttonU = new Buttons("г", "Г", 45, 40, Color.MAGENTA, KeyEvent.VK_U);
-        JButton buttonI= new Buttons("ш", "Ш", 45, 40, Color.PINK, KeyEvent.VK_I);
-        JButton buttonO = new Buttons("щ", "Щ", 45, 40, Color.YELLOW, KeyEvent.VK_O);
-        JButton buttonP = new Buttons("з", "З", 45, 40, Color.GREEN, KeyEvent.VK_P);
-        JButton buttonSquareParenthesisOpen = new Buttons("[", "{", 45, 40, Color.GREEN, KeyEvent.VK_OPEN_BRACKET);
-        JButton buttonSquareParenthesisClose = new Buttons("]", "}", 45, 40, Color.GREEN, KeyEvent.VK_CLOSE_BRACKET);
-        JButton buttonSlashLeft = new Buttons("\\", "|", 85, 40, Color.GREEN, KeyEvent.VK_BACK_SLASH);
+        JButton buttonTab = new Buttons("Tab", 75, 40, Color.LIGHT_GRAY, KeyEvent.VK_TAB);
+        JButton buttonQ = new Buttons("й",  45, 40, Color.PINK, KeyEvent.VK_Q);
+        JButton buttonW = new Buttons("ц",  45, 40, Color.YELLOW, KeyEvent.VK_W);
+        JButton buttonE = new Buttons("у",  45, 40, Color.GREEN, KeyEvent.VK_E);
+        JButton buttonR = new Buttons("к",  45, 40, Color.CYAN, KeyEvent.VK_R);
+        JButton buttonT = new Buttons("е",  45, 40, Color.CYAN, KeyEvent.VK_T);
+        JButton buttonY = new Buttons("н",  45, 40, Color.MAGENTA, KeyEvent.VK_Y);
+        JButton buttonU = new Buttons("г",  45, 40, Color.MAGENTA, KeyEvent.VK_U);
+        JButton buttonI= new Buttons("ш",  45, 40, Color.PINK, KeyEvent.VK_I);
+        JButton buttonO = new Buttons("щ",  45, 40, Color.YELLOW, KeyEvent.VK_O);
+        JButton buttonP = new Buttons("з",  45, 40, Color.GREEN, KeyEvent.VK_P);
+        JButton buttonSquareParenthesisOpen = new Buttons("х",  45, 40, Color.GREEN, KeyEvent.VK_OPEN_BRACKET);
+        JButton buttonSquareParenthesisClose = new Buttons("ї",  45, 40, Color.GREEN, KeyEvent.VK_CLOSE_BRACKET);
+        JButton buttonSlashLeft = new Buttons("\\",  85, 40, Color.GREEN, KeyEvent.VK_BACK_SLASH);
 
         //row 3
-        JButton buttonCapsLock = new ControlButtons("Capslock", 100, 40, Color.LIGHT_GRAY);
-        JButton buttonA = new Buttons("ф", "Ф", 45, 40, Color.PINK, KeyEvent.VK_A);
-        JButton buttonS = new Buttons("і", "І", 45, 40, Color.YELLOW, KeyEvent.VK_S);
-        JButton buttonD = new Buttons("в", "В", 45, 40, Color.GREEN, KeyEvent.VK_D);
-        JButton buttonF = new Buttons("а", "А", 45, 40, Color.CYAN, KeyEvent.VK_F);
-        JButton buttonG = new Buttons("п", "П", 45, 40, Color.CYAN, KeyEvent.VK_G);
-        JButton buttonH = new Buttons("р", "Р", 45, 40, Color.MAGENTA, KeyEvent.VK_H);
-        JButton buttonJ = new Buttons("о", "О", 45, 40, Color.MAGENTA, KeyEvent.VK_J);
-        JButton buttonK = new Buttons("л", "Л", 45, 40, Color.PINK, KeyEvent.VK_K);
-        JButton buttonL = new Buttons("д", "Д", 45, 40, Color.YELLOW, KeyEvent.VK_L);
-        JButton buttonDotComa = new Buttons("ж", "Ж", 45, 40, Color.GREEN, KeyEvent.VK_COMMA);
-        JButton buttonQuote = new Buttons("є", "Є", 45, 40, Color.GREEN, KeyEvent.VK_QUOTE);
-        JButton buttonEnter = new ControlButtons("Enter", 110, 40, Color.LIGHT_GRAY);
+        JButton buttonCapsLock = new Buttons("Capslock", 100, 40, Color.LIGHT_GRAY, KeyEvent.VK_CAPS_LOCK);
+        JButton buttonA = new Buttons("ф",  45, 40, Color.PINK, KeyEvent.VK_A);
+        JButton buttonS = new Buttons("і",  45, 40, Color.YELLOW, KeyEvent.VK_S);
+        JButton buttonD = new Buttons("в",  45, 40, Color.GREEN, KeyEvent.VK_D);
+        JButton buttonF = new Buttons("а",  45, 40, Color.CYAN, KeyEvent.VK_F);
+        JButton buttonG = new Buttons("п",  45, 40, Color.CYAN, KeyEvent.VK_G);
+        JButton buttonH = new Buttons("р",  45, 40, Color.MAGENTA, KeyEvent.VK_H);
+        JButton buttonJ = new Buttons("о",  45, 40, Color.MAGENTA, KeyEvent.VK_J);
+        JButton buttonK = new Buttons("л",  45, 40, Color.PINK, KeyEvent.VK_K);
+        JButton buttonL = new Buttons("д",  45, 40, Color.YELLOW, KeyEvent.VK_L);
+        JButton buttonDotComa = new Buttons("ж",  45, 40, Color.GREEN, KeyEvent.VK_SEMICOLON);
+        JButton buttonQuote = new Buttons("є",  45, 40, Color.GREEN, KeyEvent.VK_QUOTE);
+        JButton buttonEnter = new Buttons("Enter", 110, 40, Color.LIGHT_GRAY, KeyEvent.VK_ENTER);
 
         //row 4
-        JButton buttonLeftShift = new ControlButtons("Shift", 120, 40, Color.LIGHT_GRAY);
-        JButton buttonZ = new Buttons("z", "Z", 45, 40, Color.PINK, KeyEvent.VK_Z);
-        JButton buttonX = new Buttons("x", "X", 45, 40, Color.YELLOW, KeyEvent.VK_X);
-        JButton buttonC = new Buttons("v", "C", 45, 40, Color.GREEN, KeyEvent.VK_C);
-        JButton buttonV = new Buttons("v", "V", 45, 40, Color.CYAN, KeyEvent.VK_V);
-        JButton buttonB = new Buttons("b", "B", 45, 40, Color.CYAN, KeyEvent.VK_B);
-        JButton buttonN = new Buttons("n", "N", 45, 40, Color.MAGENTA, KeyEvent.VK_N);
-        JButton buttonM = new Buttons("m", "M", 45, 40, Color.MAGENTA, KeyEvent.VK_M);
-        JButton buttonComma = new Buttons(",", "<", 45, 40, Color.PINK, KeyEvent.VK_COMMA);
-        JButton buttonDot = new Buttons(".", ">", 45, 40, Color.YELLOW, KeyEvent.VK_PERIOD);
-        JButton buttonRightSlash = new Buttons("/", "?", 45, 40, Color.GREEN, KeyEvent.VK_SLASH);
-        JButton buttonRightShift = new ControlButtons("Shift", 140, 40, Color.LIGHT_GRAY);
+        JButton buttonLeftShift = new Buttons("Shift", 120, 40, Color.LIGHT_GRAY, KeyEvent.VK_SHIFT);
+        JButton buttonZ = new Buttons("я",  45, 40, Color.PINK, KeyEvent.VK_Z);
+        JButton buttonX = new Buttons("ч",  45, 40, Color.YELLOW, KeyEvent.VK_X);
+        JButton buttonC = new Buttons("с",  45, 40, Color.GREEN, KeyEvent.VK_C);
+        JButton buttonV = new Buttons("м",  45, 40, Color.CYAN, KeyEvent.VK_V);
+        JButton buttonB = new Buttons("и",  45, 40, Color.CYAN, KeyEvent.VK_B);
+        JButton buttonN = new Buttons("т",  45, 40, Color.MAGENTA, KeyEvent.VK_N);
+        JButton buttonM = new Buttons("ь",   45, 40, Color.MAGENTA, KeyEvent.VK_M);
+        JButton buttonComma = new Buttons("б",   45, 40, Color.PINK, KeyEvent.VK_COMMA);
+        JButton buttonDot = new Buttons("ю",   45, 40, Color.YELLOW, KeyEvent.VK_PERIOD);
+        JButton buttonRightSlash = new Buttons(".",   45, 40, Color.GREEN, KeyEvent.VK_SLASH);
+        JButton buttonRightShift = new Buttons("Shift", 140, 40, Color.LIGHT_GRAY, KeyEvent.VK_SHIFT);
 
         //row 5
-        JButton buttonRightCtrl = new ControlButtons("Ctrl", 75, 40, Color.LIGHT_GRAY);
-        JButton buttonRightWin = new ControlButtons("Win", 75, 40, Color.LIGHT_GRAY);
-        JButton buttonRightAlt = new ControlButtons("Alt", 75, 40, Color.LIGHT_GRAY);
-        JButton buttonSpace = new Buttons("Space", "Space", 285, 40, Color.ORANGE, KeyEvent.VK_SPACE);
-        JButton buttonLeftAlt = new ControlButtons("Alt", 75, 40, Color.LIGHT_GRAY);
-        JButton buttonLeftWin = new ControlButtons("Win", 75, 40, Color.LIGHT_GRAY);
-        JButton buttonLeftCtrl = new ControlButtons("Ctrl", 75, 40, Color.LIGHT_GRAY);
+        JButton buttonRightCtrl = new Buttons("Ctrl", 75, 40, Color.LIGHT_GRAY, KeyEvent.VK_CONTROL);
+        JButton buttonRightWin = new Buttons("Win", 75, 40, Color.LIGHT_GRAY, KeyEvent.VK_WINDOWS);
+        JButton buttonRightAlt = new Buttons("Alt", 75, 40, Color.LIGHT_GRAY, KeyEvent.VK_ALT);
+        JButton buttonSpace = new Buttons( "Space", 285, 40, Color.ORANGE, KeyEvent.VK_SPACE);
+        JButton buttonLeftAlt = new Buttons("Alt", 75, 40, Color.LIGHT_GRAY, KeyEvent.VK_ALT);
+        JButton buttonLeftWin = new Buttons("Win", 75, 40, Color.LIGHT_GRAY, KeyEvent.VK_WINDOWS);
+        JButton buttonLeftCtrl = new Buttons( "Ctrl", 75, 40, Color.LIGHT_GRAY, KeyEvent.VK_CONTROL);
 
         //adding buttons to window
         KeyboardPanel.add(buttonOem3);
@@ -160,25 +161,22 @@ public class ButtonLayout {
     public static class Buttons extends JButton {
 
         //default setting for buttons
-        public Buttons(String name, String shiftName, int width, int height, Color background, int key){
+        public Buttons(String name, int width, int height, Color background, int key){
 
             setPreferredSize(new Dimension(width,height));
             setText(name);
-            setFont(new Font("Kolibri",Font.PLAIN,14));
+            setFont(new Font("Coliblri",Font.PLAIN,14));
             setBackground(background);
 
-
-
             //set virtual keyboard
+
             //if button is pressed, paint bottom to red
             Action pressedButton = new AbstractAction() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     setBackground(Color.RED);
-
                 }
             };
-
             //if button is released, turn default color back
             Action releasedButton = new AbstractAction() {
                 @Override
@@ -187,7 +185,6 @@ public class ButtonLayout {
 
                 }
             };
-
                     getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(key,0,false),
                             "pressed");
                     getActionMap().put("pressed",pressedButton);
@@ -195,15 +192,9 @@ public class ButtonLayout {
                     getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(key,0,true),
                             "released");
                     getActionMap().put("released",releasedButton);
-        }
-    }
 
-        public static class ControlButtons extends JButton{
-        public ControlButtons(String name, int width, int height, Color background){
-            setText(name);
-            setPreferredSize(new Dimension(width, height));
-            setBackground(background);
+
         }
     }
-    }
+}
 //go ahead, laugh
