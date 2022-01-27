@@ -1,13 +1,9 @@
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.KeyStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 public class ButtonLayout {
@@ -165,34 +161,34 @@ public class ButtonLayout {
 
             setPreferredSize(new Dimension(width,height));
             setText(name);
-            setFont(new Font("Coliblri",Font.PLAIN,14));
+            setFont(new Font("Calibri",Font.BOLD, 14));
             setBackground(background);
 
             //set virtual keyboard
 
             //if button is pressed, paint bottom to red
-            Action pressedButton = new AbstractAction() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    setBackground(Color.RED);
-                }
-            };
+//            Action pressedButton = new AbstractAction() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    setBackground(Color.RED);
+//                    System.out.println(key);
+//                }
+//            };
             //if button is released, turn default color back
-            Action releasedButton = new AbstractAction() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    setBackground(background);
-
-                }
-            };
-                    getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(key,0,false),
-                            "pressed");
-                    getActionMap().put("pressed",pressedButton);
-
-                    getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(key,0,true),
-                            "released");
-                    getActionMap().put("released",releasedButton);
-
+//            Action releasedButton = new AbstractAction() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    setBackground(background);
+//
+//                }
+//            };
+//                    getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(key,0,false),
+//                            "pressed");
+//                    getActionMap().put("pressed",pressedButton);
+//
+//                    getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(key,0,true),
+//                            "released");
+//                    getActionMap().put("released",releasedButton);
 
         }
     }

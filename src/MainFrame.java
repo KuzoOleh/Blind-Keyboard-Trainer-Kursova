@@ -18,6 +18,7 @@ public class MainFrame {
 
     public MainFrame(){
 
+
         scrWidth = (int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         scrHeight = (int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
@@ -47,6 +48,7 @@ public class MainFrame {
         mainPanel.setLayout(new GridLayout(2,1));
         frame.setSize(new Dimension(790, 550));
         frame.setResizable(false);
+        frame.setTitle("Програма-тренажер сліпого друку");
     }
     public static void main(String[] args) {
         new MainFrame();

@@ -53,27 +53,23 @@ public class MenuBarLayout implements ActionListener {
         minutesShow = String.format("%02d", minutes);
         secondsShow = String.format("%02d", seconds);
         mistakeCounter = new JLabel();
-        //set timer
+        //setting timer
         timer = new Timer(1000, e -> {
             secondCounter+=1;
             elapsedTime += 1000;
             minutes = (elapsedTime / 60000) % 60;
             seconds = (elapsedTime / 1000) % 60;
-            wordsPerMinute = (int)((((double)CheckText.charCount / 5) / secondCounter) * 60);
 
-            //localCharCount += wordsPerMinute;
+            wordsPerMinute = (int)((((double)CheckText.charCount / 5) / secondCounter) * 60);
             minutesShow = String.format("%02d", minutes);
             secondsShow = String.format("%02d", seconds);
-            stopWatch.setText("Час " + minutesShow + ":" + secondsShow + "  ");
+            stopWatch.setText("     Час " + minutesShow + ":" + secondsShow + "  ");
             mistakeCounter.setText("Помилки: " + mistakes);
-            wpm.setText("символів за секунду: " + wordsPerMinute);
-            System.out.println(wordsPerMinute);
+            wpm.setText("слів за хвилину: " + wordsPerMinute);
         });
 
-        stopWatch.setText("Час: " + minutesShow + ":" + secondsShow + " ");
-        mistakeCounter.setText("Помилки: " + mistakes + " ");
-        wpm.setText("символів за секудну: " + wordsPerMinute + " ");
-
+        stopWatch.setText("     Час: " + minutesShow + ":" + secondsShow + " ");
+        //adding components to the menu
         menuBar.add(file);
         menuBar.add(window);
         menuBar.add(info);
@@ -82,15 +78,13 @@ public class MenuBarLayout implements ActionListener {
 
         window.add(clearWindow);
         window.add(closeProgram);
-
+        //adding items to info
         info.add(about);
         info.add(rules);
 
         menuBar.add(stopWatch);
-        menuBar.add(mistakeCounter);
-        menuBar.add(wpm);
-        menuBar.add(mistakeCounter);
 
+        //adding action listeners to menu items
         openFile.addActionListener(this);
 
         clearWindow.addActionListener(this);
@@ -104,6 +98,7 @@ public class MenuBarLayout implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         File file;
         Scanner scan;
+
         if (e.getSource() == openFile) {
             CheckText.charCount = 0;
             CheckText.localCharCount = 0;
@@ -112,14 +107,16 @@ public class MenuBarLayout implements ActionListener {
             String line;
             CheckText.outputText.setText("");
             CheckText.inputText.setText("");
-            wpm.setText("символів за секунду: 0 ");
+            wpm.setText("слів за хвилину: 0 ");
             mistakeCounter.setText("Помилки: 0 ");
             elapsedTime = 0;
 
             minutesShow = String.format("%02d", 0);
             secondsShow = String.format("%02d", 0);
 
-            stopWatch.setText("Час: " + minutesShow + ":" + secondsShow + " ");
+
+            stopWatch.setText("     Час: " + minutesShow + ":" + secondsShow + " ");
+            //adding text to outputText
             int returnValue = fileChooser.showOpenDialog(null);
             if(returnValue == JFileChooser.APPROVE_OPTION){
 
@@ -137,32 +134,31 @@ public class MenuBarLayout implements ActionListener {
                     }
                 }
             }
-
+            //clear inputText
             if(e.getSource()==clearWindow){
                 CheckText.charCount = 0;
                 CheckText.localCharCount = 0;
                 timer.stop();
 
                 CheckText.inputText.setText("");
-                wpm.setText("символів за секунду: 0 ");
-                mistakeCounter.setText("Помилки: 0 ");
+
                 elapsedTime = 0;
 
                 minutesShow = String.format("%02d", 0);
                 secondsShow = String.format("%02d", 0);
 
-                stopWatch.setText("Час: " + minutesShow + ":" + secondsShow + " ");
+                stopWatch.setText("     Час: " + minutesShow + ":" + secondsShow + " ");
             }
-
+            //closing program
             if (e.getSource() == closeProgram) {
                 System.exit(-1);
             }
-
+            //opening InfoWindow
             if(e.getSource()==about){
                 InfoWindow openInfo = new InfoWindow();
                 openInfo.frame.setVisible(true);
             }
-
+            //opening RulesWindow
             if(e.getSource()==rules){
                 RulesWindow rulesWindow = new RulesWindow();
                 rulesWindow.frame.setVisible(true);

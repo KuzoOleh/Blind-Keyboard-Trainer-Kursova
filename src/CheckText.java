@@ -31,7 +31,7 @@ public class CheckText {
 
     public CheckText() {
 
-        Font font = new Font("comic-sans", Font.PLAIN, 16);
+        Font font = new Font("Helvetica", Font.PLAIN, 18);
 
         textLayout = new JPanel();
         textLayout.setLayout(new GridLayout(2, 1));
