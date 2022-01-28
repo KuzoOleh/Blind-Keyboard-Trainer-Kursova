@@ -1,6 +1,4 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import javax.swing.*;
 import java.awt.*;
 
 public class InfoWindow {
@@ -35,6 +33,10 @@ public class InfoWindow {
         author.setFont(font);
         author.setEditable(false);
         author.setText("Автор програми - Кузьо Олег");
+
+
+        ImageIcon img = new ImageIcon("src\\resources\\icon\\logo.png");
+        frame.setIconImage(img.getImage());
 
         panel.add(projectName);
         panel.add(author);

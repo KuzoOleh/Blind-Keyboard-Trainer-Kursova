@@ -1,20 +1,21 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
+
+
 
 //initializing main window
 public class MainFrame {
     JFrame frame;
     JPanel mainPanel;
+
     public static CheckText checkText = new CheckText();
     public static MenuBarLayout menuBarLayout;
+
     int scrWidth;
     int scrHeight;
-
     int winWidth = 800;
     int winHeight = 600;
+
 
     public MainFrame(){
 
@@ -44,8 +45,11 @@ public class MainFrame {
         mainPanel.add(checkText.textLayout);
         mainPanel.add(buttonLayout.KeyboardPanel);
 
+        ImageIcon img = new ImageIcon("src\\resources\\icon\\logo.png");
+        frame.setIconImage(img.getImage());
 
         mainPanel.setLayout(new GridLayout(2,1));
+
         frame.setSize(new Dimension(790, 550));
         frame.setResizable(false);
         frame.setTitle("Програма-тренажер сліпого друку");

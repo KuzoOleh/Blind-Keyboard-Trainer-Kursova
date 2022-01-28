@@ -1,8 +1,6 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.WindowConstants;
-import java.awt.*;
+import javax.swing.*;
+import java.awt.Font;
+import java.awt.GridLayout;
 
 public class ResultFrame {
     int winWidth = 400;
@@ -45,6 +43,10 @@ public class ResultFrame {
     wordPerMinute.setEditable(false);
     wordPerMinute.setFont(font);
     wordPerMinute.setText("Слів за хвилину: " + MenuBarLayout.wordsPerMinute);
+
+
+        ImageIcon img = new ImageIcon("src\\resources\\icon\\logo.png");
+        frame.setIconImage(img.getImage());
 
     panel.add(timer);
     panel.add(wordPerMinute);

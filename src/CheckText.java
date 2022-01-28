@@ -54,7 +54,7 @@ public class CheckText {
 
                 try {
                     new Check(e);
-                    //new RowCounter();
+                    
                 } catch (BadLocationException badLocationException) {
                     badLocationException.printStackTrace();
                 }
@@ -69,25 +69,28 @@ public class CheckText {
         public Check(KeyEvent e) throws BadLocationException {
 
             char C = e.getKeyChar();
-            fillCharArray cText = new fillCharArray();
+            fillCharArray charText = new fillCharArray();
             int backSpace = e.getKeyCode();
             int controlButton = e.getKeyCode();
             int shiftButton = e.getKeyCode();
+            int tabButton = e.getKeyCode();
+            int altButton = e.getKeyCode();
 
             String current = inputText.getText();
 
             if (backSpace != KeyEvent.VK_BACK_SPACE) {
-                //if cText1 current char is equal to cText2 char set the foreground magenta
                 try {
-                    if (C == cText.getOutputText.charAt(cText.getInputText.length())) {
+                    //if charText1 current char is equal to charText2 char set the default black foreground
+                    if (C == charText.getOutputText.charAt(charText.getInputText.length())) {
 
                         doc.insertString(doc.getLength(), String.valueOf(C), attributeSetGreen);
 
                         charCount++;
                         localCharCount++;
+                        //if currentChar equals '.', delete all written text to this char
                             if (C == '.') {
-                            int startIndex = cText.getOutputText.indexOf(cText.getOutputText);
-                            int endIndex = cText.getOutputText.indexOf(".");
+                            int startIndex = charText.getOutputText.indexOf(charText.getOutputText);
+                            int endIndex = charText.getOutputText.indexOf(".");
                             String replacement = outputText.getText();
                             String toBeReplaced = outputText.getText();
                             toBeReplaced = toBeReplaced.substring(startIndex, endIndex + 1);
@@ -98,13 +101,13 @@ public class CheckText {
                             }
 
 
-
+                        //start the timer
                         if (charCount == 1) {
                             MainFrame.menuBarLayout.timer.start();
                         }
                     }
-                    //if cText1 current char is not equal to cText2 char set the foreground red
-                    if (C != cText.getOutputText.charAt(cText.getInputText.length())) {
+                    //if charText1 current char is not equal to charText2 char set the foreground red
+                    if (C != charText.getOutputText.charAt(charText.getInputText.length())) {
                         charCount++;
                         localCharCount++;
                         if (charCount == 1) {
@@ -112,9 +115,10 @@ public class CheckText {
                         }
                         doc.insertString(doc.getLength(), String.valueOf(C), attributeSetRed);
                         MenuBarLayout.mistakes++;
-                        MenuBarLayout.mistakeCounter.setText("Помилки: " + MenuBarLayout.mistakes);
-                        MenuBarLayout.menuBar.add(MenuBarLayout.mistakeCounter);
-                        if ((shiftButton == KeyEvent.VK_SHIFT) || (controlButton == KeyEvent.VK_CONTROL)) {
+
+                        //skip this chars
+                        if ((shiftButton == KeyEvent.VK_SHIFT) || (controlButton == KeyEvent.VK_CONTROL)
+                        ||(tabButton == KeyEvent.VK_TAB) || (altButton == KeyEvent.VK_ALT)) {
                             MenuBarLayout.mistakes--;
                             charCount--;
                             localCharCount--;
@@ -122,26 +126,29 @@ public class CheckText {
                             doc.remove(current.length(), 1);
                         }
                     }
-
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Ви не можете більше дописувати текст",
                             "Помилка", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
+            } 
+            //when press the backspace, delete one char
+            else {
                 doc.remove(current.length() - 1, 1);
                 charCount--;
                 localCharCount--;
             }
-            if (localCharCount == cText.getOutputText.length()) {
+            //stop the timer, show ResultFrame
+            if (localCharCount == charText.getOutputText.length()) {
                 ResultFrame resultFrame = new ResultFrame();
                 resultFrame.frame.setVisible(true);
                 MainFrame.menuBarLayout.timer.stop();
+                MenuBarLayout.mistakes--;
             }
         }
     }
 
 }
-
+//get text from inputText and outputText
 class fillCharArray {
 
     String getOutputText;

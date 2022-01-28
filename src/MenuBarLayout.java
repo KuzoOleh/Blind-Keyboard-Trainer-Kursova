@@ -17,7 +17,6 @@ public class MenuBarLayout implements ActionListener {
     Timer timer;
     public static int wordsPerMinute = 0;
     int elapsedTime = 0;
-    public static int localCharCount = 0;
     public static int minutes = 0;
     public static int seconds = 0;
     public static int secondCounter = 1; //create another second variable because of error
@@ -26,7 +25,6 @@ public class MenuBarLayout implements ActionListener {
      JLabel wpm;
 
     public static JLabel stopWatch = null;
-    public static JLabel mistakeCounter;
     public static int mistakes = 0; //count how much user have made a mistake
 
     JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -47,12 +45,12 @@ public class MenuBarLayout implements ActionListener {
 
     public MenuBarLayout() {
         menuBar = new JMenuBar();
-        mistakeCounter = new JLabel();
+
         wpm = new JLabel();
         stopWatch = new JLabel();
         minutesShow = String.format("%02d", minutes);
         secondsShow = String.format("%02d", seconds);
-        mistakeCounter = new JLabel();
+
         //setting timer
         timer = new Timer(1000, e -> {
             secondCounter+=1;
@@ -64,8 +62,6 @@ public class MenuBarLayout implements ActionListener {
             minutesShow = String.format("%02d", minutes);
             secondsShow = String.format("%02d", seconds);
             stopWatch.setText("     Час " + minutesShow + ":" + secondsShow + "  ");
-            mistakeCounter.setText("Помилки: " + mistakes);
-            wpm.setText("слів за хвилину: " + wordsPerMinute);
         });
 
         stopWatch.setText("     Час: " + minutesShow + ":" + secondsShow + " ");
@@ -107,8 +103,6 @@ public class MenuBarLayout implements ActionListener {
             String line;
             CheckText.outputText.setText("");
             CheckText.inputText.setText("");
-            wpm.setText("слів за хвилину: 0 ");
-            mistakeCounter.setText("Помилки: 0 ");
             elapsedTime = 0;
 
             minutesShow = String.format("%02d", 0);
