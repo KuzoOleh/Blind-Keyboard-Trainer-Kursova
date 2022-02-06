@@ -1,4 +1,7 @@
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 import java.awt.Font;
 
 public class RulesWindow {
@@ -47,7 +50,6 @@ public class RulesWindow {
 
                 Кожен з цих кольорів (окрім сірого і помаранчевого) визначають палець, яким треба натискати на кнопку:сірий і рожевий - мізинець, жовтий - безіменні, зелений - середні,\s
                 блакитний - вказівні, помаранчевий - великі пальці.""");
-
 
         frame.add(scrollPane);
     }

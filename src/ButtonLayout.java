@@ -7,9 +7,9 @@ import java.awt.Font;
 
 public class ButtonLayout {
 
-    public JPanel KeyboardPanel;
+    JPanel KeyboardPanel;
 
-    public ButtonLayout(){
+    ButtonLayout(){
 
         KeyboardPanel = new JPanel();
         KeyboardPanel.setSize(350,200);
@@ -162,12 +162,6 @@ public class ButtonLayout {
             setText(name);
             setFont(new Font("Calibri",Font.BOLD, 14));
             setBackground(background);
-
-            //set virtual keyboard
-
-
-
         }
     }
 }
-//go ahead, laugh
