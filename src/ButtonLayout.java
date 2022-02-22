@@ -162,11 +162,6 @@ public class ButtonLayout {
             setText(name);
             setFont(new Font("Calibri",Font.BOLD, 14));
             setBackground(background);
-
-            //set virtual keyboard
-
-
-
         }
     }
 }
