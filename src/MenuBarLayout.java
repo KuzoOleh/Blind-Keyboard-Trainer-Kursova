@@ -14,22 +14,21 @@ import java.util.Scanner;
 
 public class MenuBarLayout implements ActionListener {
 
-    Timer timer;
-    public static int wordsPerMinute = 0;
+    static Timer timer;
+    private static int wordsPerMinute = 0;
     int elapsedTime = 0;
-    public static int minutes = 0;
-    public static int seconds = 0;
-    public static int secondCounter = 1; //create another second variable because of error
+    private static int minutes = 0;
+    private static int seconds = 0;
+    private static int secondCounter = 1; //create another second variable because of error
      String minutesShow;
      String secondsShow;
      JLabel wpm;
 
-    public static JLabel stopWatch = null;
-    public static int mistakes = 0; //count how much user have made a mistake
+    private static JLabel stopWatch = null;
+    private static int mistakes = -1; //count how much user have made a mistake
 
     JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-
-    public static JMenuBar menuBar;
+    private static JMenuBar menuBar;
 
     JMenu file = new JMenu("Файл");
     JMenu window = new JMenu("Вікно");
@@ -37,13 +36,12 @@ public class MenuBarLayout implements ActionListener {
 
     JMenuItem openFile = new JMenuItem("Відкрити файл");
 
-    JMenuItem clearWindow = new JMenuItem("Очистити поля");
     JMenuItem closeProgram = new JMenuItem("Закрити програму");
 
     JMenuItem about = new JMenuItem("про програму");
     JMenuItem rules = new JMenuItem("Правила");
 
-    public MenuBarLayout() {
+    MenuBarLayout() {
         menuBar = new JMenuBar();
 
         wpm = new JLabel();
@@ -58,13 +56,14 @@ public class MenuBarLayout implements ActionListener {
             minutes = (elapsedTime / 60000) % 60;
             seconds = (elapsedTime / 1000) % 60;
 
-            wordsPerMinute = (int)((((double)CheckText.charCount / 5) / secondCounter) * 60);
+            wordsPerMinute = (int)((((double)CheckText.getCharCount() / 5) / secondCounter) * 60);
             minutesShow = String.format("%02d", minutes);
             secondsShow = String.format("%02d", seconds);
             stopWatch.setText("     Час " + minutesShow + ":" + secondsShow + "  ");
         });
 
         stopWatch.setText("     Час: " + minutesShow + ":" + secondsShow + " ");
+
         //adding components to the menu
         menuBar.add(file);
         menuBar.add(window);
@@ -72,7 +71,6 @@ public class MenuBarLayout implements ActionListener {
 
         file.add(openFile);
 
-        window.add(clearWindow);
         window.add(closeProgram);
         //adding items to info
         info.add(about);
@@ -83,33 +81,34 @@ public class MenuBarLayout implements ActionListener {
         //adding action listeners to menu items
         openFile.addActionListener(this);
 
-        clearWindow.addActionListener(this);
         closeProgram.addActionListener(this);
 
         about.addActionListener(this);
         rules.addActionListener(this);
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         File file;
         Scanner scan;
+        String line;
 
         if (e.getSource() == openFile) {
-            CheckText.charCount = 0;
-            CheckText.localCharCount = 0;
+            CheckText.setCharCount(0);
+            CheckText.setLocalCharCount(0);
+            mistakes = 0;
 
             timer.stop();
-            String line;
+
             CheckText.outputText.setText("");
             CheckText.inputText.setText("");
             elapsedTime = 0;
 
             minutesShow = String.format("%02d", 0);
             secondsShow = String.format("%02d", 0);
-
-
             stopWatch.setText("     Час: " + minutesShow + ":" + secondsShow + " ");
+
             //adding text to outputText
             int returnValue = fileChooser.showOpenDialog(null);
             if(returnValue == JFileChooser.APPROVE_OPTION){
@@ -117,10 +116,10 @@ public class MenuBarLayout implements ActionListener {
                 file = fileChooser.getSelectedFile();
                 try {
                     scan = new Scanner(file);
-                    StringBuilder builder = new StringBuilder();
+
                     while(scan.hasNextLine()){
                         line = scan.nextLine();
-                        builder.append(line);
+
                         CheckText.outputText.setText(CheckText.outputText.getText() + line + "\n");
                     }
                 } catch (FileNotFoundException ex) {
@@ -128,21 +127,7 @@ public class MenuBarLayout implements ActionListener {
                     }
                 }
             }
-            //clear inputText
-            if(e.getSource()==clearWindow){
-                CheckText.charCount = 0;
-                CheckText.localCharCount = 0;
-                timer.stop();
 
-                CheckText.inputText.setText("");
-
-                elapsedTime = 0;
-
-                minutesShow = String.format("%02d", 0);
-                secondsShow = String.format("%02d", 0);
-
-                stopWatch.setText("     Час: " + minutesShow + ":" + secondsShow + " ");
-            }
             //closing program
             if (e.getSource() == closeProgram) {
                 System.exit(-1);
@@ -158,4 +143,32 @@ public class MenuBarLayout implements ActionListener {
                 rulesWindow.frame.setVisible(true);
             }
         }
+
+        //adding getters and setters
+
+    public static int getWordsPerMinute() {
+        return wordsPerMinute;
     }
+
+    public static int getMinutes() {
+        return minutes;
+    }
+
+    public static int getSeconds() {
+        return seconds;
+    }
+
+    public static int getMistakes() {
+        return mistakes;
+    }
+
+    public static void setMistakes(int mistakes) {
+        MenuBarLayout.mistakes = mistakes;
+    }
+
+    public static JMenuBar getMenuBar() {
+        return menuBar;
+    }
+
+
+}

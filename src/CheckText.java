@@ -14,12 +14,14 @@ import java.awt.event.KeyEvent;
 
 public class CheckText {
 
-    public static int charCount = 0;
-    public static int localCharCount = 0;
+    private static int charCount = 0;
+    private static int localCharCount = 0;
+
     public static JTextPane inputText;
     public static JTextPane outputText;
+    int localMistakes = 0;
     StyledDocument doc;
-    public JPanel textLayout;
+     public static JPanel textLayout;
 
     StyleContext context = StyleContext.getDefaultStyleContext();
 
@@ -103,7 +105,7 @@ public class CheckText {
 
                         //start the timer
                         if (charCount == 1) {
-                            MainFrame.menuBarLayout.timer.start();
+                            MenuBarLayout.timer.start();
                         }
                     }
                     //if charText1 current char is not equal to charText2 char set the foreground red
@@ -111,15 +113,15 @@ public class CheckText {
                         charCount++;
                         localCharCount++;
                         if (charCount == 1) {
-                            MainFrame.menuBarLayout.timer.start();
+                            MenuBarLayout.timer.start();
                         }
                         doc.insertString(doc.getLength(), String.valueOf(C), attributeSetRed);
-                        MenuBarLayout.mistakes++;
+                        MenuBarLayout.setMistakes(localMistakes++);
 
                         //skip this chars
                         if ((shiftButton == KeyEvent.VK_SHIFT) || (controlButton == KeyEvent.VK_CONTROL)
                         ||(tabButton == KeyEvent.VK_TAB) || (altButton == KeyEvent.VK_ALT)) {
-                            MenuBarLayout.mistakes--;
+                            MenuBarLayout.setMistakes(localMistakes--);
                             charCount--;
                             localCharCount--;
 
@@ -141,12 +143,23 @@ public class CheckText {
             if (localCharCount == charText.getOutputText.length()) {
                 ResultFrame resultFrame = new ResultFrame();
                 resultFrame.frame.setVisible(true);
-                MainFrame.menuBarLayout.timer.stop();
-                MenuBarLayout.mistakes--;
+                MenuBarLayout.timer.stop();
+                MenuBarLayout.setMistakes(localMistakes--);
             }
         }
     }
+    //initializing getters and setters
+    public static int getCharCount() {
+        return charCount;
+    }
 
+    public static void setCharCount(int charCount) {
+        CheckText.charCount = charCount;
+    }
+
+    public static void setLocalCharCount(int localCharCount) {
+        CheckText.localCharCount = localCharCount;
+    }
 }
 //get text from inputText and outputText
 class fillCharArray {

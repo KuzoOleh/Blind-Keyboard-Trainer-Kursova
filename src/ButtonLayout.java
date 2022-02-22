@@ -7,9 +7,9 @@ import java.awt.Font;
 
 public class ButtonLayout {
 
-    public JPanel KeyboardPanel;
+    JPanel KeyboardPanel;
 
-    public ButtonLayout(){
+    ButtonLayout(){
 
         KeyboardPanel = new JPanel();
         KeyboardPanel.setSize(350,200);
@@ -165,4 +165,3 @@ public class ButtonLayout {
         }
     }
 }
-//go ahead, laugh

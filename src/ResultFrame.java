@@ -1,4 +1,7 @@
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -31,18 +34,18 @@ public class ResultFrame {
     mistake_Result = new JTextArea();
     mistake_Result.setEditable(false);
     mistake_Result.setFont(font);
-    mistake_Result.setText("Кількість помилок: " + MenuBarLayout.mistakes);
+    mistake_Result.setText("Кількість помилок: " + MenuBarLayout.getMistakes());
 
 
     timer = new JTextArea();
     timer.setEditable(false);
     timer.setFont(font);
-    timer.setText("Загальний час: " + MenuBarLayout.minutes + ":" + MenuBarLayout.seconds);
+    timer.setText("Загальний час: " + MenuBarLayout.getMinutes() + ":" + MenuBarLayout.getSeconds());
 
     wordPerMinute = new JTextArea();
     wordPerMinute.setEditable(false);
     wordPerMinute.setFont(font);
-    wordPerMinute.setText("Слів за хвилину: " + MenuBarLayout.wordsPerMinute);
+    wordPerMinute.setText("Слів за хвилину: " + MenuBarLayout.getWordsPerMinute());
 
 
         ImageIcon img = new ImageIcon("src\\resources\\icon\\logo.png");
